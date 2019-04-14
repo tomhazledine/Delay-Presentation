@@ -2,14 +2,15 @@ import React, { useState, useContext } from "react";
 
 import { AudioContext } from "../Main.js";
 import { getRandomInt } from "../../helpers/utils";
+import CodeBlock from "../generic/CodeBlock.js";
 
 const SimpleNote = ({}) => {
     const context = useContext(AudioContext);
     const [note, setNote] = useState(null);
 
-    const createNote = context => {
+    const createNote = (context, pitch = getRandomInt(220, 880)) => {
         var osc = context.createOscillator();
-        osc.frequency.value = getRandomInt(220, 880);
+        osc.frequency.value = pitch;
         osc.connect(context.destination);
         return osc;
     };
@@ -29,7 +30,7 @@ const SimpleNote = ({}) => {
             note.stop();
             setNote(null);
         } else {
-            const note = createNote(context);
+            const note = createNote(context, 220);
             note.start();
             setNote(note);
         }
@@ -37,13 +38,14 @@ const SimpleNote = ({}) => {
 
     return (
         <div>
-            <h1>App</h1>
             <button className="js__toggle-pulse" onClick={handleNoteToggle}>
                 Pulse On
             </button>
             <button className="js__trigger-pulse" onClick={handleNoteTrigger}>
                 Trigger Pulse
             </button>
+
+            <CodeBlock>{`some code`}</CodeBlock>
         </div>
     );
 };
