@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import { AudioContext } from "../Main.js";
 import { getRandomInt } from "../../helpers/utils";
@@ -35,6 +35,17 @@ const SimpleNote = ({}) => {
             setNote(note);
         }
     };
+
+    useEffect(() => {
+        console.log("rendering SimpleNote");
+        return function cleanup() {
+            console.log("derendering SimpleNote");
+            if (note) {
+                note.stop();
+                setNote(null);
+            }
+        };
+    });
 
     return (
         <div>

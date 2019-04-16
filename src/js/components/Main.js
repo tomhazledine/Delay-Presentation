@@ -1,22 +1,32 @@
 import React, { useState, useEffect } from "react";
 
 import SimpleNote from "./steps/SimpleNote";
+import SlideSwitcher from "./generic/SlideSwitcher";
 
 export const AudioContext = React.createContext();
+export const SlidesContext = React.createContext();
 
 const Main = ({}) => {
     const [context, setContext] = useState(null);
+    const [slides, setSlides] = useState({ current: 1 });
 
     useEffect(() => {
         setContext(new (window.AudioContext || window.webkitAudioContext)());
     }, []);
 
+    useEffect(() => {
+        console.log("slide has changed!");
+    }, [slides.current]);
+
     return (
         <AudioContext.Provider value={context}>
-            <div className="wrapper--main">
-                <h1>App</h1>
-                <SimpleNote />
-            </div>
+            <SlidesContext.Provider value={[slides, setSlides]}>
+                <div className="wrapper--main">
+                    <h1>App. slide {slides.current}</h1>
+                    {slides.current === 1 ? <SimpleNote /> : null}
+                    <SlideSwitcher />
+                </div>
+            </SlidesContext.Provider>
         </AudioContext.Provider>
     );
 };
