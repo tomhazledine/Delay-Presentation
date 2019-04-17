@@ -18,30 +18,18 @@ const FrequencyGraph = () => {
         const bottomThreshold = 200; // 200Hz
         const topThreshold = 20000; // 20kHz
 
-        // const result = bins
-        //     .map((bin, i) => {
-        //         // console.log(bin);
-        //         const frequency = (i * sampleRate) / fftSize;
-        //         if (frequency > bottomThreshold && frequency < topThreshold) {
-        //             return { frequency: frequency, value: bin };
-        //         }
-        //     })
-        //     .filter(bin => bin);
-
         var result = [];
 
         for (var i = 1; i <= bins.length; i++) {
             // Calculate the frequency for each "bin".
             var frequency = (i * sampleRate) / fftSize;
             if (frequency > bottomThreshold && frequency < topThreshold) {
-                var output = [];
-                output["frequency"] = frequency;
-                output["value"] = bins[i - 1]; // Strength of signal at selected frequency
+                var output = { frequency, value: bins[i - 1] };
+                // output.frequency = frequency;
+                // output.value = bins[i - 1]; // Strength of signal at selected frequency
                 result.push(output);
             }
         }
-
-        // console.log(result);
 
         return result;
     };

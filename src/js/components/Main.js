@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+import EnhancedNote from "./steps/EnhancedNote";
 import SimpleNote from "./steps/SimpleNote";
 import SlideSwitcher from "./generic/SlideSwitcher";
 
@@ -9,7 +10,7 @@ export const SlidesContext = React.createContext();
 const Main = ({}) => {
     const [context, setContext] = useState(null);
     const [master, setMaster] = useState(null);
-    const [slides, setSlides] = useState({ current: 1 });
+    const [slides, setSlides] = useState({ current: 2 });
 
     useEffect(() => {
         setContext(new (window.AudioContext || window.webkitAudioContext)());
@@ -39,6 +40,7 @@ const Main = ({}) => {
                 <div className="wrapper--main">
                     <h1>App. slide {slides.current}</h1>
                     {slides.current === 1 ? <SimpleNote /> : null}
+                    {slides.current === 2 ? <EnhancedNote /> : null}
                     <SlideSwitcher />
                 </div>
             </SlidesContext.Provider>
