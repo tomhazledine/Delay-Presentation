@@ -8,6 +8,7 @@ export const SlidesContext = React.createContext();
 
 const Main = ({}) => {
     const [context, setContext] = useState(null);
+    const [master, setMaster] = useState(null);
     const [slides, setSlides] = useState({ current: 1 });
 
     useEffect(() => {
@@ -15,11 +16,25 @@ const Main = ({}) => {
     }, []);
 
     useEffect(() => {
+        if (context) {
+            const master = context.createGain();
+            master.gain.value = 0.2;
+            setMaster(master);
+        }
+    }, [context]);
+
+    useEffect(() => {
+        if (master && context) {
+            master.connect(context.destination);
+        }
+    }, [master]);
+
+    useEffect(() => {
         console.log("slide has changed!");
     }, [slides.current]);
 
     return (
-        <AudioContext.Provider value={context}>
+        <AudioContext.Provider value={{ context, master }}>
             <SlidesContext.Provider value={[slides, setSlides]}>
                 <div className="wrapper--main">
                     <h1>App. slide {slides.current}</h1>

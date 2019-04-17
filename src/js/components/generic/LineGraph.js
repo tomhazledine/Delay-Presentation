@@ -1,32 +1,50 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
 import * as d3 from "d3";
 
-const LineGraph = ({ data, className }) => {
+import { DataContext } from "./FrequencyGraph";
+
+const LineGraph = ({ className }) => {
+    const data = useContext(DataContext);
+    const [line, setLine] = useState();
+    const [max, setMax] = useState();
+    const [area, setArea] = useState();
+
     const layout = {
         width: 400,
         height: 300
     };
 
     const graphDetails = {
-        xScale: d3.scaleLinear().range([0, layout.width]),
+        xScale: d3.scaleLog().range([0, layout.width]),
         yScale: d3.scaleLinear().range([layout.height, 0]),
-        lineGenerator: d3.line()
+        lineGenerator: d3.line(),
+        shapeGenerator: d3.area()
     };
 
-    const xDomain = d3.extent(data, d => d.x); //parseInt(d.year));
+    graphDetails.xScale.domain([200, 20000]);
+    graphDetails.yScale.domain([0, 280]);
 
-    const yMax = d3.max(data, d => d.y);
+    graphDetails.lineGenerator.x(d => graphDetails.xScale(d.frequency));
+    graphDetails.lineGenerator.y(d => graphDetails.yScale(d.value));
 
-    graphDetails.xScale.domain(xDomain);
-    graphDetails.yScale.domain([0, yMax]);
+    graphDetails.shapeGenerator.x(d => graphDetails.xScale(d.frequency));
+    graphDetails.shapeGenerator.y0(() => graphDetails.yScale(0));
+    graphDetails.shapeGenerator.y1(d => graphDetails.yScale(d.value));
 
-    const lines = graphDetails => {
-        graphDetails.lineGenerator.x(d => graphDetails.xScale(d.x));
-        graphDetails.lineGenerator.y(d => graphDetails.yScale(d.y));
-        let line = graphDetails.lineGenerator(data);
+    useEffect(() => {
+        if (data) {
+            // Calculate the data line
+            const newLine = graphDetails.lineGenerator(data);
+            setLine(newLine);
 
-        return <path d={line} fill="none" stroke={"black"} />;
-    };
+            // Calculate the max value
+            const yMax = d3.max(data, d => d.value);
+            setMax(yMax);
+
+            const area = graphDetails.shapeGenerator(data);
+            setArea(area);
+        }
+    }, [data]);
 
     return (
         <svg
@@ -34,7 +52,15 @@ const LineGraph = ({ data, className }) => {
             width={layout.width}
             height={layout.height}
         >
-            {lines(graphDetails)}
+            <line
+                className="graph__max"
+                x1={graphDetails.xScale(200)}
+                y1={graphDetails.yScale(max)}
+                x2={graphDetails.xScale(20000)}
+                y2={graphDetails.yScale(max)}
+            />
+            <path className="graph__data" key={line} d={line} />
+            <path className="graph__area" d={area} />
         </svg>
     );
 };

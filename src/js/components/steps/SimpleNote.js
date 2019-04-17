@@ -6,13 +6,13 @@ import CodeBlock from "../generic/CodeBlock.js";
 import FrequencyGraph from "../generic/FrequencyGraph.js";
 
 const SimpleNote = ({}) => {
-    const context = useContext(AudioContext);
+    const { context, master } = useContext(AudioContext);
     const [note, setNote] = useState(null);
 
     const createNote = (context, pitch = getRandomInt(220, 880)) => {
         var osc = context.createOscillator();
         osc.frequency.value = pitch;
-        osc.connect(context.destination);
+        osc.connect(master);
         return osc;
     };
 
@@ -38,9 +38,7 @@ const SimpleNote = ({}) => {
     };
 
     useEffect(() => {
-        console.log("rendering SimpleNote");
         return function cleanup() {
-            console.log("derendering SimpleNote");
             if (note) {
                 note.stop();
                 setNote(null);

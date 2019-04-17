@@ -1,0 +1,14 @@
+.graph--line {
+    background: rgba(black, 0.2);
+    .graph__data {
+        fill: none;
+        stroke: white;
+    }
+    .graph__max {
+        fill: none;
+        stroke: rgba(white, 0.6);
+    }
+    .graph__area {
+        fill: rgba(white, 0.2);
+    }
+}
