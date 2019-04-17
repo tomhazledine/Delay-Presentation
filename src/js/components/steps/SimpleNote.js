@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { AudioContext } from "../Main.js";
 import { getRandomInt } from "../../helpers/utils";
 import CodeBlock from "../generic/CodeBlock.js";
+import FrequencyGraph from "../generic/FrequencyGraph.js";
 
 const SimpleNote = ({}) => {
     const context = useContext(AudioContext);
@@ -55,6 +56,8 @@ const SimpleNote = ({}) => {
             <button className="js__trigger-pulse" onClick={handleNoteTrigger}>
                 Trigger Pulse
             </button>
+
+            <FrequencyGraph />
 
             <CodeBlock>{`some code`}</CodeBlock>
         </div>
