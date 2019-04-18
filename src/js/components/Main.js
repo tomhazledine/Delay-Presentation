@@ -31,7 +31,7 @@ const Main = ({}) => {
     }, [master]);
 
     useEffect(() => {
-        console.log("slide has changed!");
+        // console.log("slide has changed!", slides);
     }, [slides.current]);
 
     return (

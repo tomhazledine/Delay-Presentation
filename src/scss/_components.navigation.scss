@@ -1,0 +1,34 @@
+.slide-switcher__button {
+    @extend %buttonReset;
+    position: fixed;
+    bottom: 0;
+    font-size: 1rem;
+    color: $white;
+    background: $black;
+    padding: 1rem;
+    &:focus {
+        outline: none;
+    }
+    &:disabled {
+        background: $grey--mid;
+    }
+}
+
+.slide-switcher__button.slide-switcher__button--prev {
+    left: 0;
+}
+
+.slide-switcher__button.slide-switcher__button--next {
+    right: 0;
+}
+
+.slide-switcher__icon {
+    fill: $white;
+    display: block;
+    width: 1em;
+    height: 1em;
+}
+
+.slide-switcher__icon--next {
+    transform: rotate(180deg);
+}
