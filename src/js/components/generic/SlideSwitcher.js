@@ -17,7 +17,7 @@ const SlideSwitcher = () => {
     };
 
     const handleKeyDown = e => {
-        if (e.code === "ArrowRight") {
+        if (e.code === "ArrowRight" || e.code === "Space") {
             handleSlideNav(true);
         }
         if (e.code === "ArrowLeft") {
