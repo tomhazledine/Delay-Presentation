@@ -1,0 +1,17 @@
+.progress-bar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 1rem;
+    background: $black;
+}
+
+.progress-bar__inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1rem;
+    background: $blue;
+    transition: width 0.2s;
+}

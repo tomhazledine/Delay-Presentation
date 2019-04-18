@@ -10,6 +10,9 @@ const SlideSwitcher = () => {
         if (newCurrent < 1) {
             newCurrent = 1;
         }
+        if (newCurrent > slides.total) {
+            newCurrent = slides.total;
+        }
         setSlides({
             ...slides,
             current: newCurrent
@@ -51,6 +54,7 @@ const SlideSwitcher = () => {
             <button
                 className="slide-switcher__button slide-switcher__button--next"
                 onClick={() => handleSlideNav(true)}
+                disabled={slides.current >= slides.total}
             >
                 <span className="visuallyhidden">next</span>
                 <svg
