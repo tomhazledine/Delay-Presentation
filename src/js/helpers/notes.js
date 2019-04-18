@@ -13,6 +13,8 @@ export const buildOctave = a => ({
     c: a * Math.pow(2, -9 / 12)
 });
 
+export const transpose = (freq, steps) => freq * Math.pow(2, steps / 12);
+
 export const notes = [
     { name: "C4", value: 261.63 },
     { name: "C#4", value: 277.18 },

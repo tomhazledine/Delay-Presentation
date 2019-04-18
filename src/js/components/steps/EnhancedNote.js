@@ -4,7 +4,7 @@ import { AudioContext } from "../Main";
 import { getRandomInt, uuidv4 } from "../../helpers/utils";
 import CodeBlock from "../generic/CodeBlock";
 import FrequencyGraph from "../generic/FrequencyGraph";
-import { C_Maj } from "../../helpers/notes";
+import { C_Maj, transpose } from "../../helpers/notes";
 
 const EnhancedNote = ({}) => {
     const { context, master } = useContext(AudioContext);
@@ -31,7 +31,7 @@ const EnhancedNote = ({}) => {
 
         if (complex) {
             const vco2 = context.createOscillator();
-            vco2.frequency.value = pitch * 0.5;
+            vco2.frequency.value = transpose(pitch, 7);
 
             const secondaryVca = context.createGain();
             secondaryVca.gain.value = 0.3;
@@ -78,7 +78,8 @@ const EnhancedNote = ({}) => {
             stopNote(oldNote);
             setNotes([]);
         } else {
-            const newNote = createNote(context, C_Maj[0].value, false, "root");
+            const droneFreq = transpose(C_Maj[0].value, -12);
+            const newNote = createNote(context, droneFreq, false, "root");
             console.log("newNote", newNote);
             startNote(newNote);
             setNotes([...notes, newNote]);
