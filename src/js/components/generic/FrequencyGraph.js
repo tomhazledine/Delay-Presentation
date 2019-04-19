@@ -76,20 +76,20 @@ const FrequencyGraph = () => {
     return (
         <div className="frequency-graph__wrapper">
             frequency
-            <div class="controlPadBase">
-                <div class="screw screw_1">
-                    <span class="screwInner" />
+            <div className="controlPadBase">
+                <div className="screw screw_1">
+                    <span className="screwInner" />
                 </div>
-                <div class="screw screw_2">
-                    <span class="screwInner" />
+                <div className="screw screw_2">
+                    <span className="screwInner" />
                 </div>
-                <div class="screw screw_3">
-                    <span class="screwInner" />
+                <div className="screw screw_3">
+                    <span className="screwInner" />
                 </div>
-                <div class="screw screw_4">
-                    <span class="screwInner" />
+                <div className="screw screw_4">
+                    <span className="screwInner" />
                 </div>
-                <div class="controlPadOuter">
+                <div className="controlPadOuter">
                     <div className="crt__wrapper">
                         <div className="crt">
                             <div className="crt__screen">

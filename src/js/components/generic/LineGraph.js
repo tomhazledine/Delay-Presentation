@@ -68,6 +68,7 @@ const LineGraph = ({ className }) => {
         10000
     ].map(freq => (
         <line
+            key={`freq_${freq}`}
             className={`graph__tick--${freq > 1000 ? "solid" : "dashed"}`}
             x1={graphDetails.xScale(freq)}
             y1={graphDetails.yScale(0)}
@@ -78,6 +79,7 @@ const LineGraph = ({ className }) => {
 
     const horizontalTicks = [50, 100, 150, 200, 250].map(value => (
         <line
+            key={`value_${value}`}
             className={`graph__tick--${
                 value % 100 === 0 ? "dashed" : "dotted"
             }`}
