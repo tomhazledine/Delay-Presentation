@@ -1,14 +1,103 @@
 .graph--line {
-    background: rgba(black, 0.2);
+    // background: rgba(black, 0.2);
+    border: 1px solid $crt__grid;
     .graph__data {
         fill: none;
-        stroke: white;
+        stroke: $crt__marker;
     }
     .graph__max {
         fill: none;
-        stroke: rgba(white, 0.6);
+        stroke: rgba($crt__marker, 0.6);
+        stroke-dasharray: 8 4;
     }
-    .graph__area {
-        fill: rgba(white, 0.2);
+    .graph__tick {
+        fill: none;
+        stroke: $crt__grid;
+    }
+    .graph__tick--solid {
+        fill: none;
+        stroke: $crt__grid;
+    }
+    .graph__tick--dotted {
+        fill: none;
+        stroke: $crt__grid;
+        stroke-dasharray: 2 6;
+    }
+    .graph__tick--dashed {
+        fill: none;
+        stroke: $crt__grid;
+        stroke-dasharray: 8 16;
+    }
+}
+
+// ------------------
+// CONTROL PAD SCREEN
+// ------------------
+.crt__wrapper {
+    background: black;
+    width: 550px;
+}
+.crt {
+    margin: 2em auto;
+    padding: 0.4rem;
+    text-align: center;
+}
+.crt__screen {
+    position: relative;
+    background: $crt__black;
+    padding: 20px;
+    // width: 100%;
+    // height: 20em;
+    cursor: none;
+    overflow: hidden;
+    border-top-left-radius: 5em 1em;
+    border-top-right-radius: 5em 1em;
+    border-bottom-left-radius: 5em 1em;
+    border-bottom-right-radius: 5em 1em;
+    background: $crt__controlPad_dark;
+    background-image: linear-gradient(
+        $crt__controlPad_dark,
+        $crt__controlPad_light,
+        $crt__controlPad_dark
+    );
+}
+
+.crt__label {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    font-size: 0.6em;
+    color: darken($crt__grid, 5%);
+    display: block;
+    width: 12em;
+    line-height: 1;
+    text-align: center;
+    position: absolute;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    &.crt__label--top {
+        top: 0.6em;
+        left: 50%;
+        margin-left: -6em;
+    }
+    &.crt__label--bottom {
+        bottom: 0.5em;
+        left: 50%;
+        margin-left: -6em;
+    }
+    &.crt__label--right {
+        top: 50%;
+        right: 0.8em;
+        margin-right: -6em;
+        transform-origin: 50% 50%;
+        transform: rotate(-90deg);
+    }
+    &.crt__label--left {
+        top: 50%;
+        left: 0.8em;
+        margin-left: -6em;
+        transform-origin: 50% 50%;
+        transform: rotate(-90deg);
     }
 }

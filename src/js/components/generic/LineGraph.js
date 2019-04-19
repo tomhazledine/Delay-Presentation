@@ -10,8 +10,8 @@ const LineGraph = ({ className }) => {
     const [area, setArea] = useState();
 
     const layout = {
-        width: 800,
-        height: 300
+        width: 500,
+        height: 400
     };
 
     const graphDetails = {
@@ -21,7 +21,7 @@ const LineGraph = ({ className }) => {
         shapeGenerator: d3.area()
     };
 
-    graphDetails.xScale.domain([200, 20000]);
+    graphDetails.xScale.domain([200, 10000]);
     graphDetails.yScale.domain([0, 280]);
 
     graphDetails.lineGenerator.x(d => graphDetails.xScale(d.frequency));
@@ -46,12 +46,74 @@ const LineGraph = ({ className }) => {
         }
     }, [data]);
 
+    const verticalTicks = [
+        // 100,
+        // 200,
+        300,
+        400,
+        500,
+        600,
+        700,
+        800,
+        900,
+        1000,
+        2000,
+        3000,
+        4000,
+        5000,
+        6000,
+        7000,
+        8000,
+        9000,
+        10000
+    ].map(freq => (
+        <line
+            className={`graph__tick--${freq > 1000 ? "solid" : "dashed"}`}
+            x1={graphDetails.xScale(freq)}
+            y1={graphDetails.yScale(0)}
+            x2={graphDetails.xScale(freq)}
+            y2={graphDetails.yScale(280)}
+        />
+    ));
+
+    const horizontalTicks = [50, 100, 150, 200, 250].map(value => (
+        <line
+            className={`graph__tick--${
+                value % 100 === 0 ? "dashed" : "dotted"
+            }`}
+            x1={graphDetails.xScale(200)}
+            y1={graphDetails.yScale(value)}
+            x2={graphDetails.xScale(20000)}
+            y2={graphDetails.yScale(value)}
+        />
+    ));
+
     return (
         <svg
             className={`${className} graph--line`}
             width={layout.width}
             height={layout.height}
         >
+            <linearGradient id="graph__gradient" gradientTransform="rotate(90)">
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.1" />
+                <stop offset="100%" stopColor="#ffffff" stopOpacity="0.0" />
+            </linearGradient>
+            {verticalTicks}
+            {horizontalTicks}
+            <line
+                className="graph__tick"
+                x1={graphDetails.xScale(200)}
+                y1={graphDetails.yScale(100)}
+                x2={graphDetails.xScale(20000)}
+                y2={graphDetails.yScale(100)}
+            />
+            <line
+                className="graph__tick"
+                x1={graphDetails.xScale(200)}
+                y1={graphDetails.yScale(200)}
+                x2={graphDetails.xScale(20000)}
+                y2={graphDetails.yScale(200)}
+            />
             <line
                 className="graph__max"
                 x1={graphDetails.xScale(200)}
@@ -59,8 +121,12 @@ const LineGraph = ({ className }) => {
                 x2={graphDetails.xScale(20000)}
                 y2={graphDetails.yScale(max)}
             />
+            <path
+                className="graph__area"
+                d={area}
+                fill="url('#graph__gradient')"
+            />
             <path className="graph__data" key={line} d={line} />
-            <path className="graph__area" d={area} />
         </svg>
     );
 };

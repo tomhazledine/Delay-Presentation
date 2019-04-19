@@ -27,6 +27,32 @@ $grey: #dad8d2;
 $grey--mid: #aaaaaa;
 $primary: #00b7c6;
 
+// Oscillator colours
+$crt__black: #111111;
+$crt__body: #9da591;
+$crt__bodyLight: #c2d1c4;
+$crt__bodyBorder: #afb6b4;
+
+$crt__textRed: #673639;
+$crt__textBg: #5b5a50;
+
+$crt__controlPad_dark: #21a3ae;
+$crt__controlPad_light: #21b7b6;
+$crt__marker: #45ffdf;
+$crt__controlPadWrapper_light: #6b6d62;
+$crt__controlPadWrapper_dark: #5c5e53;
+
+$crt__controlPadWrapper_dark: #434739;
+
+$crt__screw_light: #636968;
+$crt__screw_dark: #2b2a28;
+$crt__screwBlack: #272a27;
+$crt__grid: #0c8886;
+
+$crt__button_top: #5d6545;
+$crt__button_bottom: #66685b;
+$crt__button_highlight: #6f765a;
+
 // Selection Colours
 ::selection {
     color: $white;

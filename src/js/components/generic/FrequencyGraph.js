@@ -15,7 +15,7 @@ const FrequencyGraph = () => {
     const trimFrequencies = bins => {
         const sampleRate = 44100;
         const fftSize = 1024;
-        const bottomThreshold = 200; // 200Hz
+        // const bottomThreshold = -200; // 200Hz
         const topThreshold = 20000; // 20kHz
 
         var result = [];
@@ -23,7 +23,7 @@ const FrequencyGraph = () => {
         for (var i = 1; i <= bins.length; i++) {
             // Calculate the frequency for each "bin".
             var frequency = (i * sampleRate) / fftSize;
-            if (frequency > bottomThreshold && frequency < topThreshold) {
+            if (frequency < topThreshold) {
                 var output = { frequency, value: bins[i - 1] };
                 // output.frequency = frequency;
                 // output.value = bins[i - 1]; // Strength of signal at selected frequency
@@ -76,9 +76,27 @@ const FrequencyGraph = () => {
     return (
         <div className="frequency-graph__wrapper">
             frequency
-            <DataContext.Provider value={data}>
-                <LineGraph className="frequency-graph" />
-            </DataContext.Provider>
+            <div className="crt__wrapper">
+                <div className="crt">
+                    <div className="crt__screen">
+                        <span className="crt__label crt__label--top">
+                            {"- frequency (Hz) +"}
+                        </span>
+                        <span className="crt__label crt__label--right">
+                            - level +
+                        </span>
+                        <span className="crt__label crt__label--bottom">
+                            - frequency (Hz) +
+                        </span>
+                        <span className="crt__label crt__label--left">
+                            - level +
+                        </span>
+                        <DataContext.Provider value={data}>
+                            <LineGraph className="frequency-graph" />
+                        </DataContext.Provider>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
