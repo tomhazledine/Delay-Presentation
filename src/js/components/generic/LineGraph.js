@@ -11,7 +11,7 @@ const LineGraph = ({ className }) => {
 
     const layout = {
         width: 500,
-        height: 400
+        height: 300
     };
 
     const graphDetails = {

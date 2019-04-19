@@ -30,6 +30,154 @@
     }
 }
 
+// * ----------------
+// * CONTROL PAD BODY
+// * ----------------
+.controlPadBase {
+    width: 630px;
+    // float: left;
+    margin: 1em;
+    background: $crt__controlPadWrapper_light;
+    background-image: linear-gradient($crt__controlPadWrapper_light, #434739);
+    border-top: lighten($crt__controlPadWrapper_light, 10%) solid 0.1em;
+    padding: 2em;
+    border-radius: 0.5em;
+    position: relative;
+    box-shadow: rgba(black, 0.4) -0.1em 0.2em 0.1em 0;
+}
+.screw {
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    &.screw_1 {
+        top: 0;
+        left: 0;
+        border-right: darken($crt__controlPadWrapper_light, 10%) solid 0.1em;
+        border-bottom: lighten($crt__controlPadWrapper_light, 10%) solid 0.1em;
+        border-radius: 0 0 0.5em 0;
+    }
+    &.screw_2 {
+        top: 0;
+        right: 0;
+        border-left: lighten($crt__controlPadWrapper_light, 10%) solid 0.1em;
+        border-bottom: lighten($crt__controlPadWrapper_light, 10%) solid 0.1em;
+        border-radius: 0 0 0 0.5em;
+    }
+    &.screw_3 {
+        bottom: 0;
+        right: 0;
+        border-top: darken(#434739, 10%) solid 0.1em;
+        border-left: lighten(#434739, 10%) solid 0.1em;
+        border-radius: 0.5em 0 0 0;
+    }
+    &.screw_4 {
+        bottom: 0;
+        left: 0;
+        border-top: darken(#434739, 10%) solid 0.1em;
+        border-right: darken(#434739, 10%) solid 0.1em;
+        border-radius: 0 0.5em 0 0;
+    }
+}
+.screwInner {
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+    background: red;
+    margin: 0.25em;
+    border-radius: 50%;
+    background: $crt__screw_light;
+    background-image: linear-gradient(
+        $crt__screw_light,
+        lighten($crt__screw_dark, 10%)
+    );
+    box-shadow: rgba(black, 0.3) -0.1em 0.2em 0.2em 0;
+    border-top: 0.1em solid rgba(white, 0.4);
+    position: relative;
+    &:after,
+    &:before {
+        display: block;
+        content: "";
+        width: 1.2rem;
+        height: 0.4rem;
+        background: $crt__screwBlack;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        margin-top: -0.2rem;
+        margin-left: -0.6rem;
+        border-radius: 0.2rem;
+        transform: rotate(20deg);
+    }
+    &:after {
+        transform: rotate(110deg);
+    }
+}
+.screw_3 .screwInner,
+.screw_4 .screwInner {
+    background-image: linear-gradient(
+        darken($crt__screw_light, 10%),
+        darken($crt__screw_dark, 10%)
+    );
+}
+
+.controlPadOuter {
+    background: $crt__controlPadWrapper_light;
+    background-image: linear-gradient(
+        $crt__controlPadWrapper_light,
+        $crt__controlPadWrapper_dark
+    );
+    padding: 0.7em 0.4em 1.4em;
+    border-radius: 0.5em;
+    border-top: 0.1em solid lighten($crt__controlPadWrapper_light, 20%);
+    border-bottom: 0.05em solid darken($crt__controlPadWrapper_dark, 10%);
+    box-shadow: rgba(darken($crt__controlPadWrapper_dark, 20%), 0.4) -0.5em 1em 0.2em
+        0;
+}
+
+.crt__wrapper {
+    display: block;
+    background: black;
+    border-top: #28332b solid 1em;
+    border-right: #43554e solid 1em;
+    border-bottom: #6c8283 solid 1em;
+    border-left: #262f2f solid 1em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    position: relative;
+    overflow: hidden;
+    &:before {
+        content: "";
+        display: block;
+        top: 0;
+        left: 0;
+        width: 20%;
+        height: 100%;
+        background-image: linear-gradient(
+            to right,
+            rgba(white, 0.2),
+            transparent
+        );
+        position: absolute;
+    }
+    &:after {
+        content: "";
+        display: block;
+        top: -25%;
+        left: 60%;
+        width: 20%;
+        height: 150%;
+        background-image: linear-gradient(
+            to right,
+            rgba(white, 0.1),
+            transparent
+        );
+        position: absolute;
+        pointer-events: none;
+        transform: rotate(-10deg);
+    }
+}
+
 // ------------------
 // CONTROL PAD SCREEN
 // ------------------
@@ -38,7 +186,7 @@
     width: 550px;
 }
 .crt {
-    margin: 2em auto;
+    margin: 0.5em auto;
     padding: 0.4rem;
     text-align: center;
 }

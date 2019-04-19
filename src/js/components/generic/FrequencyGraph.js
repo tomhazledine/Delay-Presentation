@@ -76,24 +76,40 @@ const FrequencyGraph = () => {
     return (
         <div className="frequency-graph__wrapper">
             frequency
-            <div className="crt__wrapper">
-                <div className="crt">
-                    <div className="crt__screen">
-                        <span className="crt__label crt__label--top">
-                            {"- frequency (Hz) +"}
-                        </span>
-                        <span className="crt__label crt__label--right">
-                            - level +
-                        </span>
-                        <span className="crt__label crt__label--bottom">
-                            - frequency (Hz) +
-                        </span>
-                        <span className="crt__label crt__label--left">
-                            - level +
-                        </span>
-                        <DataContext.Provider value={data}>
-                            <LineGraph className="frequency-graph" />
-                        </DataContext.Provider>
+            <div class="controlPadBase">
+                <div class="screw screw_1">
+                    <span class="screwInner" />
+                </div>
+                <div class="screw screw_2">
+                    <span class="screwInner" />
+                </div>
+                <div class="screw screw_3">
+                    <span class="screwInner" />
+                </div>
+                <div class="screw screw_4">
+                    <span class="screwInner" />
+                </div>
+                <div class="controlPadOuter">
+                    <div className="crt__wrapper">
+                        <div className="crt">
+                            <div className="crt__screen">
+                                <span className="crt__label crt__label--top">
+                                    {"- frequency (Hz) +"}
+                                </span>
+                                <span className="crt__label crt__label--right">
+                                    - level +
+                                </span>
+                                <span className="crt__label crt__label--bottom">
+                                    - frequency (Hz) +
+                                </span>
+                                <span className="crt__label crt__label--left">
+                                    - level +
+                                </span>
+                                <DataContext.Provider value={data}>
+                                    <LineGraph className="frequency-graph" />
+                                </DataContext.Provider>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
