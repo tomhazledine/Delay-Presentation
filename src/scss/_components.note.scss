@@ -23,3 +23,51 @@
         background: $primary;
     }
 }
+
+.note__tones {
+    padding: 1em 0;
+}
+
+.tone {
+    display: flex;
+    align-items: center;
+    padding: 0.5em 0;
+    border-top: 1px solid $hairline;
+    &:last-of-type {
+        border-bottom: 1px solid $hairline;
+    }
+}
+
+.tone__button {
+    @extend %buttonReset;
+    width: 2em;
+    background: $grey;
+    // border: 1px solid $hairline;
+    margin-right: 6px;
+    &:focus {
+        outline: none;
+    }
+}
+
+.tone__number {
+    font-weight: bold;
+    font-size: 1rem;
+}
+.tone__offset {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.tone__wave {
+    display: block;
+    margin: 0 auto;
+    width: 32px;
+    height: 32px;
+}
+
+.tone__button--active {
+    background: $primary;
+    .tone__wave {
+        fill: $white;
+    }
+}

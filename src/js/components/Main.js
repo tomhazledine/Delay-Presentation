@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import ControlledNote from "./steps/ControlledNote";
+import Delay from "./steps/Delay";
 import EnhancedNote from "./steps/EnhancedNote";
 import SimpleNote from "./steps/SimpleNote";
 
@@ -26,7 +28,12 @@ const Main = ({}) => {
     useEffect(() => {
         setContext(new (window.AudioContext || window.webkitAudioContext)());
 
-        setSlides({ ...slides, total: slidesArray.length - 1 });
+        // setSlides({ ...slides, total: slidesArray.length - 1 });
+        setSlides({
+            ...slides,
+            total: slidesArray.length - 1,
+            current: slidesArray.length - 1
+        });
     }, []);
 
     useEffect(() => {
@@ -121,10 +128,19 @@ const Main = ({}) => {
                 <FrequencyGraph />
             </div>
             <CodeBlock>{codeSnippets.cs10}</CodeBlock>
+        </React.Fragment>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <Delay
+                    showPulse={true}
+                    randomNotes={true}
+                    useScale={true}
+                    complex={true}
+                />
+                <FrequencyGraph />
+            </div>
         </React.Fragment>
     ];
-
-    console.log(slides);
 
     return (
         <AudioContext.Provider value={{ context, master }}>
