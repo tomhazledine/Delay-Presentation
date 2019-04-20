@@ -40,6 +40,18 @@ export const notes = [
 ];
 
 export const C_Maj = [
+    { name: "C3", value: transpose(261.63, -12) },
+    { name: "D3", value: transpose(293.66, -12) },
+    { name: "E3", value: transpose(329.63, -12) },
+    { name: "F3", value: transpose(349.23, -12) },
+    { name: "G3", value: transpose(392.0, -12) },
+    { name: "A3", value: transpose(440.0, -12) },
+    { name: "B3", value: transpose(493.88, -12) },
+    { name: "C4", value: transpose(523.25, -12) },
+    { name: "D4", value: transpose(587.33, -12) },
+    { name: "E4", value: transpose(659.26, -12) },
+    { name: "F4", value: transpose(698.46, -12) },
+    { name: "G4", value: transpose(783.99, -12) },
     { name: "C4", value: 261.63 },
     { name: "D4", value: 293.66 },
     { name: "E4", value: 329.63 },

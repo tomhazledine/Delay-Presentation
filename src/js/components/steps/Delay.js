@@ -6,7 +6,11 @@ import { C_Maj, transpose } from "../../helpers/notes";
 
 import RangeSlider from "../generic/RangeSlider";
 
-const Delay = ({ complex = true, useScale = true, randomNotes = true }) => {
+const Delay = ({
+    useScale = true,
+    randomNotes = true,
+    showDelayControls = false
+}) => {
     const { context, master } = useContext(AudioContext);
 
     const [tones, setTones] = useState([
@@ -126,24 +130,28 @@ const Delay = ({ complex = true, useScale = true, randomNotes = true }) => {
 
     return (
         <div className="note__controls">
-            <div className="rangeOuter">
-                <h4>Duration: {delayOptions.duration}</h4>
-                <RangeSlider
-                    min={0}
-                    max={100}
-                    value={delayOptions.duration}
-                    onChange={handleDelayDurationChange}
-                />
-            </div>
-            <div className="rangeOuter">
-                <h4>Feedback: {delayOptions.feedback}</h4>
-                <RangeSlider
-                    min={0}
-                    max={100}
-                    value={delayOptions.feedback}
-                    onChange={handleDelayFeedbackChange}
-                />
-            </div>
+            {showDelayControls ? (
+                <React.Fragment>
+                    <div className="rangeOuter">
+                        <h4>Duration: {delayOptions.duration}</h4>
+                        <RangeSlider
+                            min={0}
+                            max={100}
+                            value={delayOptions.duration}
+                            onChange={handleDelayDurationChange}
+                        />
+                    </div>
+                    <div className="rangeOuter">
+                        <h4>Feedback: {delayOptions.feedback}</h4>
+                        <RangeSlider
+                            min={0}
+                            max={100}
+                            value={delayOptions.feedback}
+                            onChange={handleDelayFeedbackChange}
+                        />
+                    </div>
+                </React.Fragment>
+            ) : null}
             <button
                 className={`
                         button-toggle

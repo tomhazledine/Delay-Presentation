@@ -131,12 +131,13 @@ const Main = ({}) => {
         </React.Fragment>,
         <React.Fragment>
             <div className="note__wrapper">
-                <Delay
-                    showPulse={true}
-                    randomNotes={true}
-                    useScale={true}
-                    complex={true}
-                />
+                <Delay showDelayControls={false} />
+                <FrequencyGraph />
+            </div>
+        </React.Fragment>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <Delay showDelayControls={true} />
                 <FrequencyGraph />
             </div>
         </React.Fragment>
