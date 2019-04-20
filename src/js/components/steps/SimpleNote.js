@@ -10,7 +10,7 @@ const SimpleNote = ({}) => {
     const [note, setNote] = useState(null);
 
     const createNote = (context, pitch = getRandomInt(220, 880)) => {
-        var osc = context.createOscillator();
+        const osc = context.createOscillator();
         osc.frequency.value = pitch;
         osc.connect(master);
         return osc;
@@ -56,8 +56,6 @@ const SimpleNote = ({}) => {
             </button>
 
             <FrequencyGraph />
-
-            <CodeBlock>{`some code`}</CodeBlock>
         </div>
     );
 };

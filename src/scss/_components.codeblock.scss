@@ -1,5 +1,25 @@
 .codeblock {
     color: white;
-    background: black;
+    background: #151617;
     font-family: monospace;
+    border-radius: 0.6rem;
+    padding: 1.6rem 3.2rem;
+    margin: 32px auto;
+    max-width: 60em;
+    font-size: 20px;
+    box-shadow: rgba(black, 0.8) 0 1rem 2rem -0.5rem;
+    position: relative;
+    line-height: 1.6;
+    &:before {
+        display: block;
+        content: "";
+        width: 0.8rem;
+        height: 0.8rem;
+        border-radius: 0.5rem;
+        background: #ff6056;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        box-shadow: #ffbd2d 1.4rem 0 0 0, #26c840 2.8rem 0 0 0;
+    }
 }
