@@ -1,6 +1,6 @@
 html {
     // background: red;
-    font-family: $display;
+    font-family: $text;
     height: 100%;
 }
 body {
@@ -11,43 +11,43 @@ body {
     height: 100%;
 }
 .wrapper--main {
-    font-size: 1.6em;
+    font-size: 1.6rem;
     // background:red;
 }
-h1,
-h2,
-h3,
-h4 {
-    display: inline-block;
-    font-family: $display;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 900;
-    // border-bottom:.2rem solid $black;
-}
-h1 {
-    font-size: 1.2em;
-}
+// h1,
+// h2,
+// h3,
+// h4 {
+//     display: inline-block;
+//     font-family: $display;
+//     text-transform: uppercase;
+//     letter-spacing: 0.1em;
+//     font-weight: 900;
+//     // border-bottom:.2rem solid $black;
+// }
+// h1 {
+//     font-size: 1.2em;
+// }
 
-a {
-    text-decoration: none;
-    color: $primary;
-    transition: color 0.2s;
-    &:hover {
-        color: $black;
-    }
-}
+// a {
+//     text-decoration: none;
+//     color: $primary;
+//     transition: color 0.2s;
+//     &:hover {
+//         color: $black;
+//     }
+// }
 
-strong {
-    font-weight: bold;
-}
+// strong {
+//     font-weight: bold;
+// }
 
-code {
-    font-family: $code;
-    // color:$black;
-    background: $grey;
-    // color:$primary;
-    background: rgba(black, 0.1);
-    padding: 0 0.2em;
-    margin: 0 0.2em;
-}
+// code {
+//     font-family: $code;
+//     // color:$black;
+//     background: $grey;
+//     // color:$primary;
+//     background: rgba(black, 0.1);
+//     padding: 0 0.2em;
+//     margin: 0 0.2em;
+// }
