@@ -2,12 +2,11 @@ import React, { useEffect, useState, useContext } from "react";
 
 import { AudioContext } from "../Main.js";
 import { getRandomInt } from "../../helpers/utils";
-import CodeBlock from "../generic/CodeBlock.js";
-import FrequencyGraph from "../generic/FrequencyGraph.js";
 
-const SimpleNote = ({}) => {
+const SimpleNote = ({ showDrone = false, showPulse = false }) => {
     const { context, master } = useContext(AudioContext);
     const [note, setNote] = useState(null);
+    const [playing, setPlaying] = useState({ drone: false, pulse: false });
 
     const createNote = (context, pitch = getRandomInt(220, 880)) => {
         const osc = context.createOscillator();
@@ -22,7 +21,7 @@ const SimpleNote = ({}) => {
     };
 
     const handleNoteTrigger = () => {
-        const note = createNote(context);
+        const note = createNote(context, 440);
         playNote(context, note);
     };
 
@@ -30,10 +29,12 @@ const SimpleNote = ({}) => {
         if (note) {
             note.stop();
             setNote(null);
+            setPlaying({ ...playing, drone: false });
         } else {
-            const note = createNote(context, 220);
+            const note = createNote(context, 440);
             note.start();
             setNote(note);
+            setPlaying({ ...playing, drone: true });
         }
     };
 
@@ -47,15 +48,31 @@ const SimpleNote = ({}) => {
     });
 
     return (
-        <div>
-            <button className="js__toggle-pulse" onClick={handleNoteToggle}>
-                Pulse On
-            </button>
-            <button className="js__trigger-pulse" onClick={handleNoteTrigger}>
-                Trigger Pulse
-            </button>
-
-            <FrequencyGraph />
+        <div className="note__controls">
+            {showDrone ? (
+                <button
+                    className={`
+                        button-toggle
+                        button-toggle--drone
+                        button-toggle--${playing.drone ? "active" : "inactive"}
+                    `}
+                    onClick={handleNoteToggle}
+                >
+                    {playing.drone ? "Stop" : "Start"} Drone
+                </button>
+            ) : null}
+            {showPulse ? (
+                <button
+                    className={`
+                        button-toggle
+                        button-toggle--pulse
+                        button-toggle--${playing.drone ? "active" : "inactive"}
+                    `}
+                    onMouseDown={handleNoteTrigger}
+                >
+                    Pulse
+                </button>
+            ) : null}
         </div>
     );
 };

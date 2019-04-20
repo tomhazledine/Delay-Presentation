@@ -2,23 +2,32 @@ import React, { useEffect, useState, useContext } from "react";
 
 import { AudioContext } from "../Main";
 import { getRandomInt, uuidv4 } from "../../helpers/utils";
-import CodeBlock from "../generic/CodeBlock";
-import FrequencyGraph from "../generic/FrequencyGraph";
 import { C_Maj, transpose } from "../../helpers/notes";
 
-const EnhancedNote = ({}) => {
+const EnhancedNote = ({
+    showDrone = false,
+    showPulse = false,
+    complex = false,
+    useScale = false,
+    randomNotes = false
+}) => {
     const { context, master } = useContext(AudioContext);
     const [notes, setNotes] = useState([]);
+    const [playing, setPlaying] = useState({ drone: false, pulse: false });
 
     const randomNote = () => {
-        const noteNumber = getRandomInt(0, C_Maj.length - 1);
-        return C_Maj[noteNumber].value;
+        if (useScale) {
+            const noteNumber = getRandomInt(0, C_Maj.length - 1);
+            return C_Maj[noteNumber].value;
+        } else {
+            return getRandomInt(220, 880);
+        }
     };
 
     const createNote = (
         context,
-        pitch = getRandomInt(220, 880),
-        complex = false,
+        pitch = randomNote(),
+        // complex = false,
         key = uuidv4()
     ) => {
         const vco = [];
@@ -67,7 +76,8 @@ const EnhancedNote = ({}) => {
     };
 
     const handleNoteTrigger = () => {
-        const note = createNote(context, randomNote(), true);
+        let pitch = randomNotes ? randomNote() : 440;
+        const note = createNote(context, pitch, true);
         playNote(context, note);
     };
 
@@ -98,17 +108,31 @@ const EnhancedNote = ({}) => {
     });
 
     return (
-        <div>
-            <button className="js__toggle-pulse" onClick={handleNoteToggle}>
-                Pulse On
-            </button>
-            <button className="js__trigger-pulse" onClick={handleNoteTrigger}>
-                Trigger Pulse
-            </button>
-
-            <FrequencyGraph />
-
-            <CodeBlock>{`some code`}</CodeBlock>
+        <div className="note__controls">
+            {showDrone ? (
+                <button
+                    className={`
+                        button-toggle
+                        button-toggle--drone
+                        button-toggle--${playing.drone ? "active" : "inactive"}
+                    `}
+                    onClick={handleNoteToggle}
+                >
+                    {playing.drone ? "Stop" : "Start"} Drone
+                </button>
+            ) : null}
+            {showPulse ? (
+                <button
+                    className={`
+                        button-toggle
+                        button-toggle--pulse
+                        button-toggle--${playing.drone ? "active" : "inactive"}
+                    `}
+                    onMouseDown={handleNoteTrigger}
+                >
+                    Pulse
+                </button>
+            ) : null}
         </div>
     );
 };

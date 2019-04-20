@@ -1,0 +1,25 @@
+.note__wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.note__controls {
+    padding: 2rem;
+}
+
+.button-toggle {
+    @extend %buttonReset;
+    display: block;
+    background: $black;
+    border-radius: 0.4rem;
+    color: $white;
+    width: 6em;
+    padding: 0.5em;
+    &:focus {
+        outline: none;
+    }
+    &:active,
+    &.button-toggle--active {
+        background: $primary;
+    }
+}
