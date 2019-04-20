@@ -3,10 +3,11 @@ import React, { useEffect, useState, useContext } from "react";
 import { AudioContext } from "../Main";
 
 import LineGraph from "./LineGraph";
+import GraphSkin from "./GraphSkin";
 
 export const DataContext = React.createContext();
 
-const FrequencyGraph = () => {
+const FrequencyGraph = ({ showSkin = false }) => {
     const { context, master } = useContext(AudioContext);
 
     const [analyser, setAnalyser] = useState(false);
@@ -74,46 +75,15 @@ const FrequencyGraph = () => {
     useEffect(() => {}, [data]);
 
     return (
-        <div className="frequency-graph__wrapper">
-            frequency
-            <div className="controlPadBase">
-                <div className="screw screw_1">
-                    <span className="screwInner" />
-                </div>
-                <div className="screw screw_2">
-                    <span className="screwInner" />
-                </div>
-                <div className="screw screw_3">
-                    <span className="screwInner" />
-                </div>
-                <div className="screw screw_4">
-                    <span className="screwInner" />
-                </div>
-                <div className="controlPadOuter">
-                    <div className="crt__wrapper">
-                        <div className="crt">
-                            <div className="crt__screen">
-                                <span className="crt__label crt__label--top">
-                                    {"- frequency (Hz) +"}
-                                </span>
-                                <span className="crt__label crt__label--right">
-                                    - level +
-                                </span>
-                                <span className="crt__label crt__label--bottom">
-                                    - frequency (Hz) +
-                                </span>
-                                <span className="crt__label crt__label--left">
-                                    - level +
-                                </span>
-                                <DataContext.Provider value={data}>
-                                    <LineGraph className="frequency-graph" />
-                                </DataContext.Provider>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <DataContext.Provider value={data}>
+            {showSkin ? (
+                <GraphSkin>
+                    <LineGraph className="frequency-graph" />
+                </GraphSkin>
+            ) : (
+                <LineGraph className="frequency-graph" />
+            )}
+        </DataContext.Provider>
     );
 };
 

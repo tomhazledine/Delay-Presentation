@@ -1,5 +1,40 @@
 .graph--line {
     // background: rgba(black, 0.2);
+    border: 1px solid $black;
+    .graph__data {
+        fill: none;
+        stroke: $primary;
+    }
+    .graph__max {
+        fill: none;
+        stroke: rgba($primary, 0.6);
+        stroke-dasharray: 8 4;
+    }
+    .graph__tick {
+        fill: none;
+        stroke: $black;
+    }
+    .graph__tick--solid {
+        fill: none;
+        stroke: $black;
+    }
+    .graph__tick--dotted {
+        fill: none;
+        stroke: $black;
+        stroke-dasharray: 2 6;
+    }
+    .graph__tick--dashed {
+        fill: none;
+        stroke: $black;
+        stroke-dasharray: 8 16;
+    }
+    .graph__area {
+        fill: rgba($primary, 0.5);
+    }
+}
+
+.crt .graph--line {
+    // background: rgba(black, 0.2);
     border: 1px solid $crt__grid;
     .graph__data {
         fill: none;
