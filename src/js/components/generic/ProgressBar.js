@@ -13,6 +13,9 @@ const ProgressBar = () => {
                 style={{ width: `${percentageProgress}%` }}
                 className="progress-bar__inner"
             />
+            <div className="progress-bar__label">
+                slide: {slides.current + 1}/{slides.total + 1}
+            </div>
         </div>
     );
 };

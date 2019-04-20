@@ -19,12 +19,14 @@ const Main = ({}) => {
     const [master, setMaster] = useState(null);
     const [slides, setSlides] = useState({
         showNav: false,
-        current: 6,
+        current: 0,
         total: 20
     });
 
     useEffect(() => {
         setContext(new (window.AudioContext || window.webkitAudioContext)());
+
+        setSlides({ ...slides, total: slidesArray.length - 1 });
     }, []);
 
     useEffect(() => {
@@ -45,121 +47,91 @@ const Main = ({}) => {
         // console.log("slide has changed!", slides);
     }, [slides.current]);
 
+    const slidesArray = [
+        <React.Fragment>
+            <Header
+                title={"Audio Context"}
+                subtitle={"Create a master gain node"}
+            />
+        </React.Fragment>,
+        <CodeBlock>{codeSnippets.cs1}</CodeBlock>,
+        <CodeBlock>{codeSnippets.cs2}</CodeBlock>,
+        <CodeBlock>{codeSnippets.cs3}</CodeBlock>,
+        <CodeBlock>{codeSnippets.cs4}</CodeBlock>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <SimpleNote showDrone={true} />
+            </div>
+            <CodeBlock>{codeSnippets.cs5}</CodeBlock>
+        </React.Fragment>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <SimpleNote showDrone={true} />
+                <FrequencyGraph />
+            </div>
+            <CodeBlock>{codeSnippets.cs5}</CodeBlock>
+        </React.Fragment>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <SimpleNote showPulse={true} />
+                <FrequencyGraph />
+            </div>
+            <CodeBlock>{codeSnippets.cs6}</CodeBlock>
+        </React.Fragment>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <EnhancedNote showPulse={true} />
+                <FrequencyGraph />
+            </div>
+            <CodeBlock>{codeSnippets.cs7}</CodeBlock>
+        </React.Fragment>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <EnhancedNote showPulse={true} />
+                <FrequencyGraph />
+            </div>
+            <CodeBlock>{codeSnippets.cs7b}</CodeBlock>
+        </React.Fragment>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <EnhancedNote showPulse={true} randomNotes={true} />
+                <FrequencyGraph />
+            </div>
+            <CodeBlock>{codeSnippets.cs8}</CodeBlock>
+        </React.Fragment>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <EnhancedNote
+                    showPulse={true}
+                    randomNotes={true}
+                    useScale={true}
+                />
+                <FrequencyGraph />
+            </div>
+            <CodeBlock>{codeSnippets.cs9}</CodeBlock>
+        </React.Fragment>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <EnhancedNote
+                    showPulse={true}
+                    randomNotes={true}
+                    useScale={true}
+                    complex={true}
+                />
+                <FrequencyGraph />
+            </div>
+            <CodeBlock>{codeSnippets.cs10}</CodeBlock>
+        </React.Fragment>
+    ];
+
+    console.log(slides);
+
     return (
         <AudioContext.Provider value={{ context, master }}>
             <SlidesContext.Provider value={[slides, setSlides]}>
                 <ProgressBar />
 
-                {slides.current === 1 ? (
-                    <React.Fragment>
-                        {/* <Header
-                            title={"Audio Context"}
-                            subtitle={"Setup our context"}
-                        /> */}
-                        <CodeBlock>{codeSnippets.cs1}</CodeBlock>
-                    </React.Fragment>
-                ) : null}
-
-                {slides.current === 2 ? (
-                    <React.Fragment>
-                        {/* <Header
-                            title={"Audio Context"}
-                            subtitle={"Setup our context"}
-                        /> */}
-                        <CodeBlock>{codeSnippets.cs2}</CodeBlock>
-                    </React.Fragment>
-                ) : null}
-
-                {slides.current === 3 ? (
-                    <React.Fragment>
-                        {/* <Header
-                            title={"Audio Context"}
-                            subtitle={"Create a master gain node"}
-                        /> */}
-                        <CodeBlock>{codeSnippets.cs3}</CodeBlock>
-                    </React.Fragment>
-                ) : null}
-
-                {slides.current === 4 ? (
-                    <React.Fragment>
-                        {/* <Header
-                            title={"Create a note"}
-                            subtitle={
-                                "Setup an oscillator, give it a pitch value, and connect it to our master gain node"
-                            }
-                        /> */}
-                        <CodeBlock>{codeSnippets.cs4}</CodeBlock>
-                    </React.Fragment>
-                ) : null}
-
-                {slides.current === 5 ? (
-                    <React.Fragment>
-                        {/* <Header title={"Create a note"} /> */}
-                        <div className="note__wrapper">
-                            <SimpleNote showDrone={true} />
-                        </div>
-                        <CodeBlock>{codeSnippets.cs5}</CodeBlock>
-                    </React.Fragment>
-                ) : null}
-
-                {slides.current === 6 ? (
-                    <React.Fragment>
-                        {/* <Header title={"Create a note"} /> */}
-                        <div className="note__wrapper">
-                            <SimpleNote showDrone={true} />
-                            <FrequencyGraph />
-                        </div>
-                        <CodeBlock>{codeSnippets.cs5}</CodeBlock>
-                    </React.Fragment>
-                ) : null}
-
-                {slides.current === 7 ? (
-                    <React.Fragment>
-                        {/* <Header title={"Create a note"} /> */}
-                        <div className="note__wrapper">
-                            <SimpleNote showPulse={true} />
-                            <FrequencyGraph />
-                        </div>
-                        <CodeBlock>{codeSnippets.cs6}</CodeBlock>
-                    </React.Fragment>
-                ) : null}
-
-                {slides.current === 8 ? (
-                    <React.Fragment>
-                        {/* <Header title={"Create a note"} /> */}
-                        <div className="note__wrapper">
-                            <EnhancedNote showPulse={true} />
-                            <FrequencyGraph />
-                        </div>
-                        <CodeBlock>{codeSnippets.cs7}</CodeBlock>
-                    </React.Fragment>
-                ) : null}
-
-                {slides.current === 9 ? (
-                    <React.Fragment>
-                        {/* <Header title={"Create a note"} /> */}
-                        <div className="note__wrapper">
-                            <EnhancedNote showPulse={true} randomNotes={true} />
-                            <FrequencyGraph />
-                        </div>
-                        <CodeBlock>{codeSnippets.cs8}</CodeBlock>
-                    </React.Fragment>
-                ) : null}
-
-                {slides.current === 10 ? (
-                    <React.Fragment>
-                        {/* <Header title={"Create a note"} /> */}
-                        <div className="note__wrapper">
-                            <EnhancedNote
-                                showPulse={true}
-                                randomNotes={true}
-                                useScale={true}
-                            />
-                            <FrequencyGraph />
-                        </div>
-                        <CodeBlock>{codeSnippets.cs9}</CodeBlock>
-                    </React.Fragment>
-                ) : null}
+                {slidesArray[slides.current]}
 
                 <SlideSwitcher />
             </SlidesContext.Provider>

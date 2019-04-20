@@ -1,9 +1,16 @@
+.codeblock__wrapper {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .codeblock {
     color: white;
     background: #151617;
     font-family: $code;
     border-radius: 0.6rem;
-    padding: 1.6rem 3.2rem;
+    padding: 1.2rem 3.2rem;
     margin: 32px auto;
     max-width: 60em;
     font-size: 22px;

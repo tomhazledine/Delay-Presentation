@@ -7,8 +7,8 @@ const SlideSwitcher = () => {
 
     const handleSlideNav = bool => {
         let newCurrent = bool ? slides.current + 1 : slides.current - 1;
-        if (newCurrent < 1) {
-            newCurrent = 1;
+        if (newCurrent <= 0) {
+            newCurrent = 0;
         }
         if (newCurrent > slides.total) {
             newCurrent = slides.total;

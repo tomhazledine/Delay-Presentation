@@ -1,9 +1,10 @@
+$normalText: $grey;
 .hljs {
     display: block;
     overflow-x: auto;
     padding: 0.5em;
     // background: #232323;
-    color: #e6e1dc;
+    color: $normalText;
 }
 .hljs-comment,
 .hljs-quote {
@@ -40,7 +41,7 @@
     color: #6d9cbe;
 }
 .hljs-params {
-    color: #d0d0ff;
+    color: $crt__controlPad_light; //#d0d0ff;
 }
 .hljs-attribute {
     color: #cda869;
@@ -54,13 +55,13 @@
 }
 .hljs-addition {
     background-color: #144212;
-    color: #e6e1dc;
+    color: $normalText;
     display: inline-block;
     width: 100%;
 }
 .hljs-deletion {
     background-color: #600;
-    color: #e6e1dc;
+    color: $normalText;
     display: inline-block;
     width: 100%;
 }
