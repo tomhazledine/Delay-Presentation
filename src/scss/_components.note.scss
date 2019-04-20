@@ -5,6 +5,7 @@
 
 .note__controls {
     padding: 2rem;
+    min-width: 20rem;
 }
 
 .button-toggle {
@@ -26,6 +27,14 @@
 
 .note__tones {
     padding: 1em 0;
+}
+
+.rangeWrapper {
+    margin: 1em 0;
+}
+
+.rangeOuter {
+    margin-bottom: 4rem;
 }
 
 .tone {

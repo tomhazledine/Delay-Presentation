@@ -4,16 +4,30 @@ import { AudioContext } from "../Main";
 import { getRandomInt, uuidv4 } from "../../helpers/utils";
 import { C_Maj, transpose } from "../../helpers/notes";
 
-const Delay = ({
-    showDrone = false,
-    showPulse = false,
-    complex = false,
-    useScale = false,
-    randomNotes = false
-}) => {
+import RangeSlider from "../generic/RangeSlider";
+
+const Delay = ({ complex = true, useScale = true, randomNotes = true }) => {
     const { context, master } = useContext(AudioContext);
-    const [notes, setNotes] = useState([]);
-    const [playing, setPlaying] = useState({ drone: false, pulse: false });
+
+    const [tones, setTones] = useState([
+        {
+            wave: "sine", // sine | square | triangle | sawtooth
+            volume: 1,
+            offset: 0
+        },
+        {
+            wave: "sine",
+            volume: 0.2,
+            offset: 7
+        }
+    ]);
+
+    const [delayOptions, setDelayOptions] = useState({
+        duration: 20,
+        feedback: 30,
+        node: null
+    });
+    const [delay, setDelay] = useState(null);
 
     const randomNote = () => {
         if (useScale) {
@@ -24,34 +38,27 @@ const Delay = ({
         }
     };
 
-    const createNote = (
-        context,
-        pitch = randomNote(),
-        // complex = false,
-        key = uuidv4()
-    ) => {
-        const vco = [];
-        const vco1 = context.createOscillator();
-        vco.push(vco1);
-        vco[0].frequency.value = pitch;
-
+    const createNote = (context, pitch = randomNote(), key = uuidv4()) => {
         const masterVca = context.createGain();
-        vco[0].connect(masterVca);
 
-        if (complex) {
-            const vco2 = context.createOscillator();
-            vco2.frequency.value = transpose(pitch, 7);
-
-            const secondaryVca = context.createGain();
-            secondaryVca.gain.value = 0.3;
-            vco2.connect(secondaryVca);
-            secondaryVca.connect(masterVca);
-            vco.push(vco2);
+        const vcos = [];
+        for (let i = 0; i < tones.length; i++) {
+            const vco = context.createOscillator();
+            vco.frequency.value = transpose(pitch, tones[i].offset);
+            vco.type = tones[i].wave;
+            const vca = context.createGain();
+            vca.gain.value = tones[i].volume;
+            vco.connect(vca);
+            vca.connect(masterVca);
+            vcos.push(vco);
         }
 
         masterVca.connect(master);
+        if (delay) {
+            masterVca.connect(delay.delayNode);
+        }
 
-        return { vco, gainNode: masterVca, key, pitch };
+        return { vco: vcos, gainNode: masterVca, key, pitch };
     };
 
     const startNote = (note, time = 0.0001) => {
@@ -81,58 +88,71 @@ const Delay = ({
         playNote(context, note);
     };
 
-    const handleNoteToggle = () => {
-        const oldNote = notes.find(note => note.key === "root");
-        if (oldNote) {
-            console.log("oldNote", oldNote);
-            stopNote(oldNote);
-            setNotes([]);
-        } else {
-            const droneFreq = transpose(C_Maj[0].value, -12);
-            const newNote = createNote(context, droneFreq, false, "root");
-            console.log("newNote", newNote);
-            startNote(newNote);
-            setNotes([...notes, newNote]);
-        }
+    const handleDelayDurationChange = e => {
+        const newDuration = e.target.value;
+        setDelayOptions({ ...delayOptions, duration: newDuration });
+    };
+    const handleDelayFeedbackChange = e => {
+        const newFeedback = e.target.value;
+        setDelayOptions({ ...delayOptions, feedback: newFeedback });
     };
 
     useEffect(() => {
-        return function cleanup() {
-            if (notes.length > 0) {
-                notes.forEach(note => {
-                    stopNote(note);
-                });
-                setNotes([]);
-            }
-        };
-    });
+        if (delay) {
+            delay.delayNode.delayTime.value = delayOptions.duration / 100;
+            delay.delayFeedback.gain.value = delayOptions.feedback / 100;
+        }
+    }, [delayOptions]);
+
+    useEffect(() => {
+        if (context && master) {
+            const delayNode = context.createDelay();
+            delayNode.delayTime.value = delayOptions.duration / 100;
+
+            const delayFeedback = context.createGain();
+            delayFeedback.gain.value = delayOptions.feedback / 100;
+
+            const delayFilter = context.createBiquadFilter();
+            delayFilter.frequency.value = 2e3;
+
+            delayNode.connect(delayFeedback);
+            delayFeedback.connect(delayFilter);
+            delayFilter.connect(delayNode);
+            delayNode.connect(master);
+
+            setDelay({ delayNode, delayFeedback, delayFilter });
+        }
+    }, [context, master]);
 
     return (
         <div className="note__controls">
-            {showDrone ? (
-                <button
-                    className={`
-                        button-toggle
-                        button-toggle--drone
-                        button-toggle--${playing.drone ? "active" : "inactive"}
-                    `}
-                    onClick={handleNoteToggle}
-                >
-                    {playing.drone ? "Stop" : "Start"} Drone
-                </button>
-            ) : null}
-            {showPulse ? (
-                <button
-                    className={`
+            <div className="rangeOuter">
+                <h4>Duration: {delayOptions.duration}</h4>
+                <RangeSlider
+                    min={0}
+                    max={100}
+                    value={delayOptions.duration}
+                    onChange={handleDelayDurationChange}
+                />
+            </div>
+            <div className="rangeOuter">
+                <h4>Feedback: {delayOptions.feedback}</h4>
+                <RangeSlider
+                    min={0}
+                    max={100}
+                    value={delayOptions.feedback}
+                    onChange={handleDelayFeedbackChange}
+                />
+            </div>
+            <button
+                className={`
                         button-toggle
                         button-toggle--pulse
-                        button-toggle--${playing.drone ? "active" : "inactive"}
                     `}
-                    onMouseDown={handleNoteTrigger}
-                >
-                    Pulse
-                </button>
-            ) : null}
+                onMouseDown={handleNoteTrigger}
+            >
+                Pulse
+            </button>
         </div>
     );
 };
