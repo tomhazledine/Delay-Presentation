@@ -61,50 +61,50 @@ const Main = ({}) => {
                 subtitle={"Create a master gain node"}
             />
         </React.Fragment>,
-        <CodeBlock>{codeSnippets.cs1}</CodeBlock>,
-        <CodeBlock>{codeSnippets.cs2}</CodeBlock>,
-        <CodeBlock>{codeSnippets.cs3}</CodeBlock>,
-        <CodeBlock>{codeSnippets.cs4}</CodeBlock>,
+        <CodeBlock>{codeSnippets.context}</CodeBlock>,
+        <CodeBlock>{codeSnippets.context_crossbrowser}</CodeBlock>,
+        <CodeBlock>{codeSnippets.master}</CodeBlock>,
+        <CodeBlock>{codeSnippets.vco}</CodeBlock>,
         <React.Fragment>
             <div className="note__wrapper">
                 <SimpleNote showDrone={true} />
             </div>
-            <CodeBlock>{codeSnippets.cs5}</CodeBlock>
+            <CodeBlock>{codeSnippets.drone}</CodeBlock>
         </React.Fragment>,
         <React.Fragment>
             <div className="note__wrapper">
                 <SimpleNote showDrone={true} />
                 <FrequencyGraph />
             </div>
-            <CodeBlock>{codeSnippets.cs5}</CodeBlock>
+            <CodeBlock>{codeSnippets.drone}</CodeBlock>
         </React.Fragment>,
         <React.Fragment>
             <div className="note__wrapper">
                 <SimpleNote showPulse={true} />
                 <FrequencyGraph />
             </div>
-            <CodeBlock>{codeSnippets.cs6}</CodeBlock>
+            <CodeBlock>{codeSnippets.pulse}</CodeBlock>
         </React.Fragment>,
         <React.Fragment>
             <div className="note__wrapper">
                 <EnhancedNote showPulse={true} />
                 <FrequencyGraph />
             </div>
-            <CodeBlock>{codeSnippets.cs7}</CodeBlock>
+            <CodeBlock>{codeSnippets.ramp1}</CodeBlock>
         </React.Fragment>,
         <React.Fragment>
             <div className="note__wrapper">
                 <EnhancedNote showPulse={true} />
                 <FrequencyGraph />
             </div>
-            <CodeBlock>{codeSnippets.cs7b}</CodeBlock>
+            <CodeBlock>{codeSnippets.ramp2}</CodeBlock>
         </React.Fragment>,
         <React.Fragment>
             <div className="note__wrapper">
                 <EnhancedNote showPulse={true} randomNotes={true} />
                 <FrequencyGraph />
             </div>
-            <CodeBlock>{codeSnippets.cs8}</CodeBlock>
+            <CodeBlock>{codeSnippets.random}</CodeBlock>
         </React.Fragment>,
         <React.Fragment>
             <div className="note__wrapper">
@@ -115,7 +115,7 @@ const Main = ({}) => {
                 />
                 <FrequencyGraph />
             </div>
-            <CodeBlock>{codeSnippets.cs9}</CodeBlock>
+            <CodeBlock>{codeSnippets.scale}</CodeBlock>
         </React.Fragment>,
         <React.Fragment>
             <div className="note__wrapper">
@@ -127,13 +127,21 @@ const Main = ({}) => {
                 />
                 <FrequencyGraph />
             </div>
-            <CodeBlock>{codeSnippets.cs10}</CodeBlock>
+            <CodeBlock>{codeSnippets.dualtone}</CodeBlock>
         </React.Fragment>,
         <React.Fragment>
             <div className="note__wrapper">
                 <Delay showDelayControls={false} />
                 <FrequencyGraph />
             </div>
+            <CodeBlock>{codeSnippets.delay}</CodeBlock>
+        </React.Fragment>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <Delay showDelayControls={false} />
+                <FrequencyGraph />
+            </div>
+            <CodeBlock>{codeSnippets.delay_connections}</CodeBlock>
         </React.Fragment>,
         <React.Fragment>
             <div className="note__wrapper">
