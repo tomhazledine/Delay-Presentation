@@ -2,25 +2,30 @@ import React from "react";
 
 import PathOne from "../illustrations/PathOne";
 
-const SignalPath = () => (
+const SignalPath = ({ showLabels = false }) => (
     <div className="signal-path">
         <PathOne />
         <div className="signal-path__labels">
-            <span className="signal-path__label">
-                Instrument
-                <br />
-                (oscillator)
-            </span>
-            <span className="signal-path__label">
-                Mixer
-                <br />
-                (gainNode)
-            </span>
-            <span className="signal-path__label">
-                Speakers
-                <br />
-                (context.destination)
-            </span>
+            <div className="signal-path__label">
+                <div className="signal-path__label-inner">Instrument</div>
+                {showLabels ? (
+                    <div className="signal-path__label-inner">(oscillator)</div>
+                ) : null}
+            </div>
+            <div className="signal-path__label">
+                <div className="signal-path__label-inner">Mixer</div>
+                {showLabels ? (
+                    <div className="signal-path__label-inner">(gainNode)</div>
+                ) : null}
+            </div>
+            <div className="signal-path__label">
+                <div className="signal-path__label-inner">Speakers</div>
+                {showLabels ? (
+                    <div className="signal-path__label-inner">
+                        (context.destination)
+                    </div>
+                ) : null}
+            </div>
         </div>
     </div>
 );

@@ -35,8 +35,8 @@ const Main = ({}) => {
         // setSlides({ ...slides, total: slidesArray.length - 1 });
         setSlides({
             ...slides,
-            total: slidesArray.length - 1,
-            current: slidesArray.length - 1
+            total: slidesArray.length - 1
+            // current: slidesArray.length - 1
         });
     }, []);
 
@@ -67,6 +67,14 @@ const Main = ({}) => {
         </React.Fragment>,
         <CodeBlock>{codeSnippets.context}</CodeBlock>,
         <CodeBlock>{codeSnippets.context_crossbrowser}</CodeBlock>,
+        <React.Fragment>
+            <Header title={"Signal Path"} />
+            <SignalPath />
+        </React.Fragment>,
+        <React.Fragment>
+            <Header title={"Signal Path"} />
+            <SignalPath showLabels={true} />
+        </React.Fragment>,
         <CodeBlock>{codeSnippets.master}</CodeBlock>,
         <CodeBlock>{codeSnippets.vco}</CodeBlock>,
         <React.Fragment>
@@ -134,6 +142,10 @@ const Main = ({}) => {
             <CodeBlock>{codeSnippets.dualtone}</CodeBlock>
         </React.Fragment>,
         <React.Fragment>
+            <Header title={"Signal Path"} />
+            <SignalPath showLabels={true} />
+        </React.Fragment>,
+        <React.Fragment>
             <div className="note__wrapper">
                 <Delay showDelayControls={false} />
                 <FrequencyGraph />
@@ -152,10 +164,6 @@ const Main = ({}) => {
                 <Delay showDelayControls={true} />
                 <FrequencyGraph />
             </div>
-        </React.Fragment>,
-        <React.Fragment>
-            <Header title={"Signal Path"} />
-            <SignalPath />
         </React.Fragment>
     ];
 
