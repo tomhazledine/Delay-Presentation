@@ -5,6 +5,8 @@ import Delay from "./steps/Delay";
 import EnhancedNote from "./steps/EnhancedNote";
 import SimpleNote from "./steps/SimpleNote";
 
+import Mixer from "./illustrations/Mixer";
+
 import CodeBlock from "./generic/CodeBlock";
 import Header from "./generic/Header";
 import FrequencyGraph from "./generic/FrequencyGraph";
@@ -148,7 +150,8 @@ const Main = ({}) => {
                 <Delay showDelayControls={true} />
                 <FrequencyGraph />
             </div>
-        </React.Fragment>
+        </React.Fragment>,
+        <Mixer />
     ];
 
     return (
