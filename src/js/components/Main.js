@@ -6,11 +6,13 @@ import EnhancedNote from "./steps/EnhancedNote";
 import SimpleNote from "./steps/SimpleNote";
 
 import Mixer from "./illustrations/Mixer";
+import Monitors from "./illustrations/Monitors";
 
 import CodeBlock from "./generic/CodeBlock";
 import Header from "./generic/Header";
 import FrequencyGraph from "./generic/FrequencyGraph";
 import ProgressBar from "./generic/ProgressBar";
+import SignalPath from "./generic/SignalPath";
 import SlideSwitcher from "./generic/SlideSwitcher";
 
 export const AudioContext = React.createContext();
@@ -151,7 +153,10 @@ const Main = ({}) => {
                 <FrequencyGraph />
             </div>
         </React.Fragment>,
-        <Mixer />
+        <React.Fragment>
+            <Header title={"Signal Path"} />
+            <SignalPath />
+        </React.Fragment>
     ];
 
     return (

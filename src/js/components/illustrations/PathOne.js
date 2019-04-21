@@ -1,13 +1,23 @@
 import React from "react";
 
-const Mixer = ({ className = "", fill = "#00B7C6" }) => (
-    <svg
-        className={`illustration--mixer ${className}`}
-        viewBox="0 0 549 555"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <g fill="none">
+const PathOne = ({ className = "", fill = "#00B7C6", bgFill = "#fff" }) => (
+    <svg className="svg__path--one" viewBox="0 0 3724 701">
+        <defs>
+            <circle id="a" cx="33.344" cy="32.777" r="32.777" />
+        </defs>
+        <path
+            className="svg__signal"
+            d="M714.765 344.45h2375.722"
+            stroke={fill}
+            strokeWidth="43"
+            strokeDasharray="58,19"
+        />
+        <g className="svg__background-masks" fill={bgFill}>
+            <path d="M1681 0h610v630.396h-610zM2816.485 0h907v630.396h-907zM.15 199.756L1083.44 8.743l88.213 500.283L88.364 700.039z" />
+        </g>
+        <g className="svg__mixer" transform="translate(1716 43.48)">
             <rect
+                fill={bgFill}
                 stroke={fill}
                 strokeWidth="8"
                 x="4"
@@ -36,7 +46,7 @@ const Mixer = ({ className = "", fill = "#00B7C6" }) => (
                     <rect
                         stroke={fill}
                         strokeWidth="5"
-                        fill="#FFF"
+                        fill={bgFill}
                         x="2.5"
                         y="2.5"
                         width="26.478"
@@ -66,7 +76,7 @@ const Mixer = ({ className = "", fill = "#00B7C6" }) => (
                     <rect
                         stroke={fill}
                         strokeWidth="5"
-                        fill="#FFF"
+                        fill={bgFill}
                         x="2.5"
                         y="2.5"
                         width="26.478"
@@ -111,7 +121,7 @@ const Mixer = ({ className = "", fill = "#00B7C6" }) => (
                     <rect
                         stroke={fill}
                         strokeWidth="5"
-                        fill="#FFF"
+                        fill={bgFill}
                         x="2.5"
                         y="2.5"
                         width="26.478"
@@ -141,7 +151,7 @@ const Mixer = ({ className = "", fill = "#00B7C6" }) => (
                     <rect
                         stroke={fill}
                         strokeWidth="5"
-                        fill="#FFF"
+                        fill={bgFill}
                         x="2.5"
                         y="2.5"
                         width="26.478"
@@ -171,7 +181,7 @@ const Mixer = ({ className = "", fill = "#00B7C6" }) => (
                     <rect
                         stroke={fill}
                         strokeWidth="5"
-                        fill="#FFF"
+                        fill={bgFill}
                         x="2.5"
                         y="2.5"
                         width="26.478"
@@ -197,7 +207,7 @@ const Mixer = ({ className = "", fill = "#00B7C6" }) => (
                     <rect
                         stroke={fill}
                         strokeWidth="5"
-                        fill="#FFF"
+                        fill={bgFill}
                         x="2.5"
                         y="2.5"
                         width="26.478"
@@ -223,7 +233,7 @@ const Mixer = ({ className = "", fill = "#00B7C6" }) => (
                     <rect
                         stroke={fill}
                         strokeWidth="5"
-                        fill="#FFF"
+                        fill={bgFill}
                         x="2.5"
                         y="2.5"
                         width="26.478"
@@ -235,6 +245,7 @@ const Mixer = ({ className = "", fill = "#00B7C6" }) => (
             </g>
             <path
                 stroke={fill}
+                fill={bgFill}
                 strokeWidth="6"
                 d="M425.5 100.679h25.478v187.765H425.5zM491.5 100.679h25.478v187.765H491.5z"
             />
@@ -243,7 +254,188 @@ const Mixer = ({ className = "", fill = "#00B7C6" }) => (
                 d="M433.929 253.474h9.076v25.993h-9.076zM499.701 253.474h9.076v25.993h-9.076zM433.929 217.48h9.076v25.993h-9.076zM499.701 217.48h9.076v25.993h-9.076zM433.929 181.487h9.076v25.993h-9.076zM499.701 181.487h9.076v25.993h-9.076zM499.701 145.493h9.076v25.993h-9.076z"
             />
         </g>
+
+        <g
+            className="svg__monitors"
+            transform="translate(2851.485 43.48)"
+            fill={bgFill}
+        >
+            <rect
+                stroke={fill}
+                strokeWidth="12"
+                x="475.501"
+                y="6"
+                width="351.019"
+                height="543"
+                rx="32"
+            />
+            <rect
+                stroke={fill}
+                strokeWidth="12"
+                x="6"
+                y="6"
+                width="351.019"
+                height="543"
+                rx="32"
+            />
+            <circle
+                stroke={fill}
+                strokeWidth="32"
+                cx="651.011"
+                cy="354.938"
+                r="139.959"
+            />
+            <circle
+                stroke={fill}
+                strokeWidth="32"
+                cx="181.509"
+                cy="354.938"
+                r="139.959"
+            />
+            <circle
+                stroke={fill}
+                strokeWidth="8"
+                cx="651.011"
+                cy="107.042"
+                r="60.535"
+            />
+            <circle
+                stroke={fill}
+                strokeWidth="8"
+                cx="181.509"
+                cy="107.042"
+                r="60.535"
+            />
+            <circle
+                stroke={fill}
+                strokeWidth="6"
+                cx="651.011"
+                cy="354.938"
+                r="57.492"
+            />
+            <circle
+                stroke={fill}
+                strokeWidth="6"
+                cx="181.509"
+                cy="354.938"
+                r="57.492"
+            />
+            <circle
+                stroke={fill}
+                strokeWidth="4"
+                cx="651.011"
+                cy="107.042"
+                r="33.343"
+            />
+            <circle
+                stroke={fill}
+                strokeWidth="4"
+                cx="181.509"
+                cy="107.042"
+                r="33.343"
+            />
+            <circle fill={fill} cx="651.011" cy="354.938" r="48.376" />
+            <circle fill={fill} cx="181.509" cy="354.938" r="48.376" />
+            <circle fill={fill} cx="651.011" cy="107.042" r="26.352" />
+            <circle fill={fill} cx="181.509" cy="107.042" r="26.352" />
+        </g>
+
+        <g className="svg__keyboard">
+            <path
+                stroke={fill}
+                fill={bgFill}
+                strokeWidth="8"
+                d="M45.937 225.93L1054.38 48.114l61.12 346.633L107.058 572.562z"
+            />
+            <path
+                fill={fill}
+                d="M103.813 577.196l1016.321-179.205 9.377 53.18L113.19 630.376z"
+            />
+            <path
+                stroke={fill}
+                strokeWidth="8"
+                fill={fill}
+                d="M141.32 306.17L992.193 156.14l3.647 20.68-850.874 150.033z"
+            />
+            <path
+                stroke={fill}
+                strokeWidth="8"
+                fill={bgFill}
+                d="M145.73 331.18l53.179-9.377 44.097 250.088-53.18 9.377zM358.448 293.672l53.18-9.377 44.097 250.088-53.18 9.377zM571.166 256.164l53.18-9.377 44.097 250.088-53.18 9.377zM783.885 218.656l53.18-9.377 44.097 250.088-53.18 9.377z"
+            />
+            <path
+                stroke={fill}
+                strokeWidth="8"
+                fill={bgFill}
+                d="M198.909 321.803l53.18-9.377 44.097 250.088-53.18 9.377zM411.627 284.295l53.18-9.377 44.097 250.088-53.18 9.377zM624.346 246.787l53.18-9.377 44.097 250.088-53.18 9.377zM837.064 209.279l53.18-9.377 44.097 250.088-53.18 9.377z"
+            />
+            <path
+                stroke={fill}
+                strokeWidth="8"
+                fill={bgFill}
+                d="M252.089 312.426l53.18-9.377 44.096 250.088-53.18 9.377zM464.807 274.918l53.18-9.377 44.097 250.088-53.18 9.377zM677.526 237.41l53.18-9.377 44.096 250.088-53.18 9.377zM890.244 199.902l53.18-9.377 44.097 250.088-53.18 9.377z"
+            />
+            <path
+                stroke={fill}
+                strokeWidth="8"
+                fill={bgFill}
+                d="M305.268 303.049l53.18-9.377 44.097 250.088-53.18 9.377zM517.987 265.541l53.18-9.377 44.097 250.088-53.18 9.377zM730.705 228.033l53.18-9.377 44.097 250.088-53.18 9.377zM943.424 190.525l53.18-9.377 44.096 250.088-53.18 9.377z"
+            />
+            <g
+                transform="rotate(-10 1989.03 -899.66)"
+                fill={fill}
+                stroke={fill}
+                strokeWidth="8"
+            >
+                <rect width="28" height="154" rx="4" />
+                <rect x="378" width="28" height="154" rx="4" />
+                <rect x="54" width="28" height="154" rx="4" />
+                <rect x="432" width="28" height="154" rx="4" />
+                <rect x="162" width="28" height="154" rx="4" />
+                <rect x="540" width="28" height="154" rx="4" />
+                <rect x="216" width="28" height="154" rx="4" />
+                <rect x="594" width="28" height="154" rx="4" />
+                <rect x="270" width="28" height="154" rx="4" />
+                <rect x="648" width="28" height="154" rx="4" />
+                <rect x="756" width="28" height="154" rx="4" />
+            </g>
+            <g
+                transform="rotate(-10 1874.729 -889.66)"
+                fill={bgFill}
+                stroke={fill}
+                strokeWidth="8"
+            >
+                <rect width="28" height="166" rx="4" />
+                <rect x="378" width="28" height="166" rx="4" />
+                <rect x="54" width="28" height="166" rx="4" />
+                <rect x="432" width="28" height="166" rx="4" />
+                <rect x="162" width="28" height="166" rx="4" />
+                <rect x="540" width="28" height="166" rx="4" />
+                <rect x="216" width="28" height="166" rx="4" />
+                <rect x="594" width="28" height="166" rx="4" />
+                <rect x="270" width="28" height="166" rx="4" />
+                <rect x="648" width="28" height="166" rx="4" />
+                <rect x="756" width="28" height="166" rx="4" />
+            </g>
+            <path
+                d="M150.873 239.442l-9.15 13.068 2.867 2.008 9.15-13.068c6.086 5.325 7.306 14.493 2.562 21.268-5.084 7.26-15.09 9.024-22.35 3.941-7.26-5.083-9.024-15.09-3.94-22.35 4.744-6.775 13.775-8.764 20.861-4.867zM195.282 231.612l-9.15 13.068 2.867 2.007 9.15-13.068c6.086 5.326 7.306 14.493 2.562 21.269-5.084 7.26-15.09 9.024-22.35 3.94-7.26-5.083-9.024-15.089-3.94-22.349 4.744-6.775 13.776-8.764 20.861-4.867zM239.692 223.781l-9.15 13.068 2.867 2.008 9.15-13.068c6.085 5.325 7.305 14.493 2.561 21.268-5.083 7.26-15.09 9.024-22.35 3.941-7.26-5.083-9.023-15.09-3.94-22.35 4.744-6.775 13.776-8.764 20.862-4.867zM284.1 215.95l-9.15 13.069 2.868 2.007 9.15-13.068c6.085 5.326 7.306 14.493 2.561 21.269-5.083 7.26-15.09 9.024-22.349 3.94-7.26-5.083-9.024-15.09-3.94-22.349 4.743-6.775 13.775-8.764 20.86-4.867z"
+                fill={fill}
+            />
+            <g transform="rotate(-10 945.95 -5082.31)">
+                <mask id="b" fill={bgFill}>
+                    <use xlinkHref="#a" />
+                </mask>
+                <g
+                    mask="url(#b)"
+                    stroke={fill}
+                    strokeLinecap="square"
+                    strokeWidth="4"
+                >
+                    <path d="M18.76-17.58L84.388 48.05M11.468-10.288l65.628 65.629M4.176-2.996l65.628 65.629M-3.116 4.296l65.628 65.629M-10.408 11.588L55.22 77.217M-17.7 18.88L47.927 84.51" />
+                </g>
+            </g>
+        </g>
     </svg>
 );
 
-export default Mixer;
+export default PathOne;
