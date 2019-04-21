@@ -1,8 +1,9 @@
 import React from "react";
 
 import PathOne from "../illustrations/PathOne";
+import DelayLoop from "../illustrations/DelayLoop";
 
-const SignalPath = ({ showLabels = false }) => (
+const SignalPath = ({ showLabels = false, showLoop = false }) => (
     <div className="signal-path">
         <PathOne />
         <div className="signal-path__labels">
@@ -27,6 +28,7 @@ const SignalPath = ({ showLabels = false }) => (
                 ) : null}
             </div>
         </div>
+        {showLoop ? <DelayLoop className="svg__delay-loop--small" /> : null}
     </div>
 );
 

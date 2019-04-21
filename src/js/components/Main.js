@@ -7,6 +7,7 @@ import SimpleNote from "./steps/SimpleNote";
 
 import Mixer from "./illustrations/Mixer";
 import Monitors from "./illustrations/Monitors";
+import DelayLoop from "./illustrations/DelayLoop";
 
 import CodeBlock from "./generic/CodeBlock";
 import Header from "./generic/Header";
@@ -35,8 +36,8 @@ const Main = ({}) => {
         // setSlides({ ...slides, total: slidesArray.length - 1 });
         setSlides({
             ...slides,
-            total: slidesArray.length - 1
-            // current: slidesArray.length - 1
+            total: slidesArray.length - 1,
+            current: slidesArray.length - 1
         });
     }, []);
 
@@ -163,6 +164,29 @@ const Main = ({}) => {
             <div className="note__wrapper">
                 <Delay showDelayControls={true} />
                 <FrequencyGraph />
+            </div>
+        </React.Fragment>,
+        <React.Fragment>
+            <Header title={"FX Loop"} />
+            <SignalPath showLabels={false} showLoop={true} />
+        </React.Fragment>,
+        <React.Fragment>
+            <Header title={"FX Loop"} />
+            <div className="delay-loop__wrapper">
+                <DelayLoop className="svg__delay-loop--large" />
+                <svg viewBox="0 0 200 200" className="delay-loop__feedback">
+                    <line
+                        className="svg__signal--loop"
+                        x1={200}
+                        y1={0}
+                        x2={0}
+                        y2={0}
+                        stroke="red"
+                        fill="none"
+                        strokeWidth="43"
+                        strokeDasharray="24,20"
+                    />
+                </svg>
             </div>
         </React.Fragment>
     ];

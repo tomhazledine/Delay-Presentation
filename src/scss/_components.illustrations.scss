@@ -23,7 +23,32 @@
     height: 8em;
 }
 
+.svg__delay-loop--small {
+    position: absolute;
+    height: 8em;
+    top: 56%;
+    left: 37%;
+}
+
+.svg__delay-loop--large {
+    height: 16em;
+}
+
+.delay-loop__wrapper {
+    position: relative;
+}
+.delay-loop__feedback {
+    position: absolute;
+    top: 42%;
+    left: 26%;
+    width: 4em;
+}
+
 .svg__signal {
+    animation: dash 3s infinite linear;
+}
+
+.svg__signal--loop {
     animation: dash 3s infinite linear;
 }
 
