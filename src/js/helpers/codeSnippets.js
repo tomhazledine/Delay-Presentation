@@ -66,15 +66,23 @@ note.vco2.connect(note.vca2);
 note.vca2.connect(master);`;
 
 export const delay = `const delay = context.createDelay();
-delay.delayTime.value = 0.2;
+delay.delayTime.value = 0.4;
+
+delay.connect(master);`;
+
+export const delay_feedback = `
 
 const feedback = context.createGain();
 feedback.gain.value = 0.3;
 
-const filter = context.createBiquadFilter();
-filter.frequency.value = 2e3;`;
-
-export const delay_connections = `delay.connect(feedback);
-feedback.connect(filter);
-filter.connect(delay);
+delay.connect(feedback);
+feedback.connect(delay);
 delay.connect(master);`;
+
+// const filter = context.createBiquadFilter();
+// filter.frequency.value = 2e3;`;
+
+// export const delay_connections = `delay.connect(feedback);
+// feedback.connect(filter);
+// filter.connect(delay);
+// delay.connect(master);`;

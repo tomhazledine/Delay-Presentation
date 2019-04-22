@@ -9,7 +9,9 @@ import RangeSlider from "../generic/RangeSlider";
 const Delay = ({
     useScale = true,
     randomNotes = true,
-    showDelayControls = false
+    showDelayControls = false,
+    delayProp = 40,
+    feedbackProp = 0
 }) => {
     const { context, master } = useContext(AudioContext);
 
@@ -27,8 +29,8 @@ const Delay = ({
     ]);
 
     const [delayOptions, setDelayOptions] = useState({
-        duration: 20,
-        feedback: 30,
+        duration: 40,
+        feedback: 0,
         node: null
     });
     const [delay, setDelay] = useState(null);
@@ -100,6 +102,14 @@ const Delay = ({
         const newFeedback = e.target.value;
         setDelayOptions({ ...delayOptions, feedback: newFeedback });
     };
+
+    useEffect(() => {
+        setDelayOptions({
+            ...delayOptions,
+            feedback: feedbackProp,
+            delay: delayProp
+        });
+    }, []);
 
     useEffect(() => {
         if (delay) {

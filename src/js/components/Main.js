@@ -36,8 +36,8 @@ const Main = ({}) => {
         // setSlides({ ...slides, total: slidesArray.length - 1 });
         setSlides({
             ...slides,
-            total: slidesArray.length - 1,
-            current: slidesArray.length - 1
+            total: slidesArray.length - 1
+            // current: slidesArray.length - 1
         });
     }, []);
 
@@ -143,32 +143,25 @@ const Main = ({}) => {
             <CodeBlock>{codeSnippets.dualtone}</CodeBlock>
         </React.Fragment>,
         <React.Fragment>
-            <Header title={"Signal Path"} />
-            <SignalPath showLabels={true} />
-        </React.Fragment>,
-        <React.Fragment>
-            <div className="note__wrapper">
-                <Delay showDelayControls={false} />
-                <FrequencyGraph />
-            </div>
-            <CodeBlock>{codeSnippets.delay}</CodeBlock>
-        </React.Fragment>,
-        <React.Fragment>
-            <div className="note__wrapper">
-                <Delay showDelayControls={false} />
-                <FrequencyGraph />
-            </div>
-            <CodeBlock>{codeSnippets.delay_connections}</CodeBlock>
-        </React.Fragment>,
-        <React.Fragment>
-            <div className="note__wrapper">
-                <Delay showDelayControls={true} />
-                <FrequencyGraph />
-            </div>
+            <Header title={"FX Loop"} />
+            <SignalPath hideLabels={true} showLabels={false} showLoop={false} />
         </React.Fragment>,
         <React.Fragment>
             <Header title={"FX Loop"} />
-            <SignalPath showLabels={false} showLoop={true} />
+            <SignalPath hideLabels={true} showLabels={false} showLoop={true} />
+        </React.Fragment>,
+        <React.Fragment>
+            <Header title={"FX Loop"} />
+            <div className="delay-loop__wrapper">
+                <DelayLoop className="svg__delay-loop--large" />
+            </div>
+        </React.Fragment>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <Delay showDelayControls={false} delay={40} />
+                <FrequencyGraph />
+            </div>
+            <CodeBlock>{codeSnippets.delay}</CodeBlock>
         </React.Fragment>,
         <React.Fragment>
             <Header title={"FX Loop"} />
@@ -187,6 +180,30 @@ const Main = ({}) => {
                         strokeDasharray="24,20"
                     />
                 </svg>
+            </div>
+        </React.Fragment>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <Delay
+                    showDelayControls={false}
+                    delayProp={40}
+                    feedbackProp={30}
+                />
+                <FrequencyGraph />
+            </div>
+            <CodeBlock>{codeSnippets.delay_feedback}</CodeBlock>
+        </React.Fragment>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <Delay showDelayControls={false} />
+                <FrequencyGraph />
+            </div>
+            <CodeBlock>{codeSnippets.delay_connections}</CodeBlock>
+        </React.Fragment>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <Delay showDelayControls={true} />
+                <FrequencyGraph />
             </div>
         </React.Fragment>
     ];
