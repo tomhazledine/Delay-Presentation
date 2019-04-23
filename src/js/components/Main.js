@@ -34,8 +34,8 @@ const Main = ({}) => {
         // setSlides({ ...slides, total: slidesArray.length - 1 });
         setSlides({
             ...slides,
-            total: slidesArray.length - 1
-            // current: slidesArray.length - 1
+            total: slidesArray.length - 1,
+            current: slidesArray.length - 1
         });
     }, []);
 
@@ -58,6 +58,15 @@ const Main = ({}) => {
     }, [slides.current]);
 
     const slidesArray = [
+        <React.Fragment>
+            <Header
+                title={"Creating a delay"}
+                subtitle={
+                    "Recreating an analogue delay pedal using the Web Audio API"
+                }
+            />
+            <Header title={"Tom Hazledine"} />
+        </React.Fragment>,
         <React.Fragment>
             <Header
                 title={"Audio Context"}
@@ -202,6 +211,12 @@ const Main = ({}) => {
             <div className="note__wrapper">
                 <Delay showDelayControls={true} />
                 <FrequencyGraph />
+            </div>
+        </React.Fragment>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <Delay showDelayControls={true} />
+                <FrequencyGraph showSkin={true} />
             </div>
         </React.Fragment>
     ];
