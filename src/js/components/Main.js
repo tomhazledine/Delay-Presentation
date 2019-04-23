@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 
-import ControlledNote from "./steps/ControlledNote";
 import Delay from "./steps/Delay";
 import EnhancedNote from "./steps/EnhancedNote";
 import SimpleNote from "./steps/SimpleNote";
 
-import Mixer from "./illustrations/Mixer";
-import Monitors from "./illustrations/Monitors";
 import DelayLoop from "./illustrations/DelayLoop";
 
 import CodeBlock from "./generic/CodeBlock";
 import Header from "./generic/Header";
+import Footer from "./generic/Footer";
 import FrequencyGraph from "./generic/FrequencyGraph";
 import ProgressBar from "./generic/ProgressBar";
 import SignalPath from "./generic/SignalPath";
@@ -215,6 +213,7 @@ const Main = ({}) => {
 
                 {slidesArray[slides.current]}
 
+                <Footer />
                 <SlideSwitcher />
             </SlidesContext.Provider>
         </AudioContext.Provider>

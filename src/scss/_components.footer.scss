@@ -1,0 +1,21 @@
+.footer {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.6rem;
+    // line-height: 1;
+    color: $crt__controlPadWrapper_light; //$grey--mid;
+}
+
+.footer__icon {
+    width: 1.8rem;
+    height: 1.8rem;
+    fill: $grey--mid;
+    margin-right: 1rem;
+}

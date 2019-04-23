@@ -79,10 +79,11 @@ delay.connect(feedback);
 feedback.connect(delay);
 delay.connect(master);`;
 
-// const filter = context.createBiquadFilter();
-// filter.frequency.value = 2e3;`;
+export const delay_filter = `
+const filter = context.createBiquadFilter();
+filter.frequency.value = 2e3;`;
 
-// export const delay_connections = `delay.connect(feedback);
-// feedback.connect(filter);
-// filter.connect(delay);
-// delay.connect(master);`;
+export const delay_connections = `delay.connect(feedback);
+feedback.connect(filter);
+filter.connect(delay);
+delay.connect(master);`;
