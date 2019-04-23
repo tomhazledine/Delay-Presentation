@@ -23,7 +23,7 @@ const Main = ({}) => {
     const [context, setContext] = useState(null);
     const [master, setMaster] = useState(null);
     const [slides, setSlides] = useState({
-        showNav: false,
+        showNav: true,
         current: 0,
         total: 20
     });
@@ -34,8 +34,8 @@ const Main = ({}) => {
         // setSlides({ ...slides, total: slidesArray.length - 1 });
         setSlides({
             ...slides,
-            total: slidesArray.length - 1,
-            current: slidesArray.length - 1
+            total: slidesArray.length - 1
+            // current: slidesArray.length - 1
         });
     }, []);
 
