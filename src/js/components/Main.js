@@ -34,8 +34,8 @@ const Main = ({}) => {
         // setSlides({ ...slides, total: slidesArray.length - 1 });
         setSlides({
             ...slides,
-            total: slidesArray.length - 1
-            // current: slidesArray.length - 1
+            total: slidesArray.length - 1,
+            current: slidesArray.length - 1
         });
     }, []);
 
@@ -72,8 +72,8 @@ const Main = ({}) => {
                 title={"Audio Context"}
                 subtitle={"Create a master gain node"}
             />
+            <CodeBlock>{codeSnippets.context}</CodeBlock>
         </React.Fragment>,
-        <CodeBlock>{codeSnippets.context}</CodeBlock>,
         <CodeBlock>{codeSnippets.context_crossbrowser}</CodeBlock>,
         <React.Fragment>
             <Header title={"Signal Path"} />
@@ -83,8 +83,14 @@ const Main = ({}) => {
             <Header title={"Signal Path"} />
             <SignalPath showLabels={true} />
         </React.Fragment>,
-        <CodeBlock>{codeSnippets.master}</CodeBlock>,
-        <CodeBlock>{codeSnippets.vco}</CodeBlock>,
+        <React.Fragment>
+            <Header title={"Gain Node"} />
+            <CodeBlock>{codeSnippets.master}</CodeBlock>,
+        </React.Fragment>,
+        <React.Fragment>
+            <Header title={"VCO"} subtitle={"voltage controlled oscillator"} />
+            <CodeBlock>{codeSnippets.vco}</CodeBlock>
+        </React.Fragment>,
         <React.Fragment>
             <div className="note__wrapper">
                 <SimpleNote showDrone={true} />
@@ -171,7 +177,7 @@ const Main = ({}) => {
             <CodeBlock>{codeSnippets.delay}</CodeBlock>
         </React.Fragment>,
         <React.Fragment>
-            <Header title={"FX Loop"} />
+            <Header title={"Feedback"} />
             <div className="delay-loop__wrapper">
                 <DelayLoop className="svg__delay-loop--large" />
                 <svg viewBox="0 0 200 200" className="delay-loop__feedback">
@@ -192,6 +198,7 @@ const Main = ({}) => {
         <React.Fragment>
             <div className="note__wrapper">
                 <Delay
+                    key={`delay_${1}`}
                     showDelayControls={false}
                     delayProp={40}
                     feedbackProp={30}
@@ -202,22 +209,43 @@ const Main = ({}) => {
         </React.Fragment>,
         <React.Fragment>
             <div className="note__wrapper">
-                <Delay showDelayControls={false} />
+                <Delay key={`delay_${2}`} showDelayControls={false} />
                 <FrequencyGraph />
             </div>
             <CodeBlock>{codeSnippets.delay_connections}</CodeBlock>
         </React.Fragment>,
         <React.Fragment>
             <div className="note__wrapper">
-                <Delay showDelayControls={true} />
+                <Delay
+                    key={`delay_${2}`}
+                    showDelayControls={true}
+                    delayProp={20}
+                    feedbackProp={70}
+                />
                 <FrequencyGraph />
             </div>
         </React.Fragment>,
         <React.Fragment>
             <div className="note__wrapper">
-                <Delay showDelayControls={true} />
+                <Delay
+                    key={`delay_${3}`}
+                    showDelayControls={true}
+                    delayProp={40}
+                    feedbackProp={70}
+                    useFilter={true}
+                />
                 <FrequencyGraph showSkin={true} />
             </div>
+        </React.Fragment>,
+        <React.Fragment>
+            <Header title={"Thanks for listening!"} />
+            <Header subtitle={'Podcast: "A Question of Code" - @aQoCode'} />
+            <Header subtitle={"Me: Tom Hazledine - @thomashazledine"} />
+            <Header
+                subtitle={
+                    "The code: https://github.com/tomhazledine/Delay-Presentation"
+                }
+            />
         </React.Fragment>
     ];
 

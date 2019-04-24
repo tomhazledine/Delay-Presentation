@@ -7,8 +7,8 @@
     }
     .graph__max {
         fill: none;
-        stroke: rgba($primary, 0.6);
-        stroke-dasharray: 8 4;
+        stroke: $primary;
+        // stroke-dasharray: 8 4;
     }
     .graph__tick {
         fill: none;
@@ -38,7 +38,7 @@
     border: 1px solid $crt__grid;
     .graph__data {
         fill: none;
-        stroke: $crt__marker;
+        stroke: $crt__marker--light;
     }
     .graph__max {
         fill: none;
@@ -62,6 +62,9 @@
         fill: none;
         stroke: $crt__grid;
         stroke-dasharray: 8 16;
+    }
+    .graph__area {
+        fill: none;
     }
 }
 

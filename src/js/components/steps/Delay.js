@@ -11,7 +11,8 @@ const Delay = ({
     randomNotes = true,
     showDelayControls = false,
     delayProp = 40,
-    feedbackProp = 0
+    feedbackProp = 0,
+    useFilter = false
 }) => {
     const { context, master } = useContext(AudioContext);
 
@@ -29,8 +30,8 @@ const Delay = ({
     ]);
 
     const [delayOptions, setDelayOptions] = useState({
-        duration: 40,
-        feedback: 0,
+        duration: delayProp,
+        feedback: feedbackProp,
         node: null
     });
     const [delay, setDelay] = useState(null);
@@ -126,12 +127,19 @@ const Delay = ({
             const delayFeedback = context.createGain();
             delayFeedback.gain.value = delayOptions.feedback / 100;
 
-            const delayFilter = context.createBiquadFilter();
-            delayFilter.frequency.value = 2e3;
-
             delayNode.connect(delayFeedback);
-            delayFeedback.connect(delayFilter);
-            delayFilter.connect(delayNode);
+
+            const delayFilter = context.createBiquadFilter();
+            delayFilter.frequency.value = 2000;
+            delayFilter.type = "lowshelf";
+
+            if (useFilter) {
+                delayFeedback.connect(delayFilter);
+                delayFilter.connect(delayNode);
+            } else {
+                delayFeedback.connect(delayNode);
+            }
+
             delayNode.connect(master);
 
             setDelay({ delayNode, delayFeedback, delayFilter });
@@ -143,7 +151,7 @@ const Delay = ({
             {showDelayControls ? (
                 <React.Fragment>
                     <div className="rangeOuter">
-                        <h4>Duration: {delayOptions.duration}</h4>
+                        <h4>Duration: {delayOptions.duration}0ms</h4>
                         <RangeSlider
                             min={0}
                             max={100}
@@ -152,7 +160,7 @@ const Delay = ({
                         />
                     </div>
                     <div className="rangeOuter">
-                        <h4>Feedback: {delayOptions.feedback}</h4>
+                        <h4>Feedback: {delayOptions.feedback}%</h4>
                         <RangeSlider
                             min={0}
                             max={100}
