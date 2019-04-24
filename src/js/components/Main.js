@@ -40,8 +40,8 @@ const Main = ({}) => {
         // setSlides({ ...slides, total: slidesArray.length - 1 });
         setSlides({
             ...slides,
-            total: slidesArray.length - 1
-            // current: slidesArray.length - 1
+            total: slidesArray.length - 1,
+            current: slidesArray.length - 1
         });
     }, []);
 
@@ -265,6 +265,10 @@ const Main = ({}) => {
                 />
                 <FrequencyGraph showSkin={true} />
             </div>
+        </React.Fragment>,
+        <React.Fragment>
+            <Header title={"All the codez!"} />
+            <CodeBlock>{codeSnippets.all_the_things}</CodeBlock>
         </React.Fragment>,
         <React.Fragment>
             <Header title={"Thanks for listening!"} />
