@@ -40,8 +40,8 @@ const Main = ({}) => {
         // setSlides({ ...slides, total: slidesArray.length - 1 });
         setSlides({
             ...slides,
-            total: slidesArray.length - 1
-            // current: slidesArray.length - 1
+            total: slidesArray.length - 1,
+            current: slidesArray.length - 1
         });
     }, []);
 
@@ -279,6 +279,18 @@ const Main = ({}) => {
                     "The code: github.com/tomhazledine/Delay-Presentation"
                 }
             />
+        </React.Fragment>,
+        <React.Fragment>
+            <div className="note__wrapper">
+                <Delay
+                    key={`delay_${3}`}
+                    showDelayControls={true}
+                    delayProp={40}
+                    feedbackProp={70}
+                    useFilter={true}
+                />
+                <FrequencyGraph showSkin={true} />
+            </div>
         </React.Fragment>
     ];
 
