@@ -1,5 +1,12 @@
 // Typography etc.
-@import url("https://fonts.googleapis.com/css?family=Abril+Fatface");
+
+@font-face {
+    font-family: "Abril Fatface";
+    src: url("../fonts/Abril_Fatface/AbrilFatface-Regular.ttf")
+        format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
 
 @font-face {
     font-family: "Cartograph Mono";
