@@ -1,7 +1,7 @@
 import React from "react";
 
 const GraphSkin = ({ children }) => (
-    <div className="frequency-graph__wrapper">
+    <div className="frequency-graph__wrapper crt">
         <div className="controlPadBase">
             <div className="screw screw_1">
                 <span className="screwInner" />
@@ -17,7 +17,7 @@ const GraphSkin = ({ children }) => (
             </div>
             <div className="controlPadOuter">
                 <div className="crt__wrapper">
-                    <div className="crt">
+                    <div className="">
                         <div className="crt__screen">
                             <span className="crt__label crt__label--top">
                                 {"- frequency (Hz) +"}
@@ -27,6 +27,12 @@ const GraphSkin = ({ children }) => (
                             </span>
                             <span className="crt__label crt__label--bottom">
                                 - frequency (Hz) +
+                            </span>
+                            <span className="crt__label crt__label--bottom-left">
+                                20Hz
+                            </span>
+                            <span className="crt__label crt__label--bottom-right">
+                                200kHz
                             </span>
                             <span className="crt__label crt__label--left">
                                 - level +

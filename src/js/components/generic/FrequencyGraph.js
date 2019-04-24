@@ -4,6 +4,7 @@ import { AudioContext } from "../Main";
 
 import LineGraph from "./LineGraph";
 import GraphSkin from "./GraphSkin";
+import GraphSkinPlain from "./GraphSkinPlain";
 
 export const DataContext = React.createContext();
 
@@ -81,7 +82,9 @@ const FrequencyGraph = ({ showSkin = false }) => {
                     <LineGraph className="frequency-graph" />
                 </GraphSkin>
             ) : (
-                <LineGraph className="frequency-graph" />
+                <GraphSkinPlain>
+                    <LineGraph className="frequency-graph" />
+                </GraphSkinPlain>
             )}
         </DataContext.Provider>
     );

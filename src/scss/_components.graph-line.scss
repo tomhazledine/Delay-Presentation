@@ -71,8 +71,8 @@
 // * ----------------
 // * CONTROL PAD BODY
 // * ----------------
-.controlPadBase {
-    width: 630px;
+.crt .controlPadBase {
+    width: 776px;
     // float: left;
     margin: 1em;
     background: $crt__controlPadWrapper_light;
@@ -83,7 +83,7 @@
     position: relative;
     box-shadow: rgba(black, 0.4) -0.1em 0.2em 0.1em 0;
 }
-.screw {
+.crt .screw {
     position: absolute;
     width: 2em;
     height: 2em;
@@ -116,7 +116,7 @@
         border-radius: 0 0.5em 0 0;
     }
 }
-.screwInner {
+.crt .screwInner {
     display: block;
     width: 1.5em;
     height: 1.5em;
@@ -151,15 +151,15 @@
         transform: rotate(110deg);
     }
 }
-.screw_3 .screwInner,
-.screw_4 .screwInner {
+.crt .screw_3 .screwInner,
+.crt .screw_4 .screwInner {
     background-image: linear-gradient(
         darken($crt__screw_light, 10%),
         darken($crt__screw_dark, 10%)
     );
 }
 
-.controlPadOuter {
+.crt .controlPadOuter {
     background: $crt__controlPadWrapper_light;
     background-image: linear-gradient(
         $crt__controlPadWrapper_light,
@@ -173,7 +173,7 @@
         0;
 }
 
-.crt__wrapper {
+.crt .crt__wrapper {
     display: block;
     background: black;
     border-top: #28332b solid 1em;
@@ -219,19 +219,22 @@
 // ------------------
 // CONTROL PAD SCREEN
 // ------------------
-.crt__wrapper {
+.crt .crt__wrapper {
     background: black;
-    width: 550px;
+    width: 650px;
 }
 .crt {
     margin: 0.5em auto;
     padding: 0.4rem;
     text-align: center;
 }
+
 .crt__screen {
     position: relative;
+    padding: 22px 30px;
+}
+.crt .crt__screen {
     background: $crt__black;
-    padding: 20px;
     // width: 100%;
     // height: 20em;
     cursor: none;
@@ -249,13 +252,13 @@
 }
 
 .crt__label {
-    text-transform: uppercase;
+    // text-transform: uppercase;
     font-weight: bold;
-    letter-spacing: 0.1em;
+    // letter-spacing: 0.1em;
     font-size: 0.6em;
-    color: darken($crt__grid, 5%);
+    color: $black;
     display: block;
-    width: 12em;
+    width: 14em;
     line-height: 1;
     text-align: center;
     position: absolute;
@@ -263,7 +266,7 @@
     pointer-events: none;
     user-select: none;
     &.crt__label--top {
-        top: 0.6em;
+        top: 0.2em;
         left: 50%;
         margin-left: -6em;
     }
@@ -272,18 +275,36 @@
         left: 50%;
         margin-left: -6em;
     }
+    &.crt__label--bottom-left {
+        bottom: 0.5em;
+        left: 0;
+        transform: translateX(-4rem);
+    }
+    &.crt__label--bottom-right {
+        bottom: 0.5em;
+        right: 0;
+        transform: translateX(4rem);
+    }
     &.crt__label--right {
         top: 50%;
-        right: 0.8em;
+        right: 0.2em;
         margin-right: -6em;
         transform-origin: 50% 50%;
         transform: rotate(-90deg);
     }
     &.crt__label--left {
         top: 50%;
-        left: 0.8em;
+        left: 0.2em;
         margin-left: -6em;
         transform-origin: 50% 50%;
         transform: rotate(-90deg);
     }
+}
+
+.crt .crt__label {
+    // text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    font-size: 0.6em;
+    // color: darken($crt__grid, 5%);
 }
