@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
 
+import cassette from "../../images/cassette.jpg";
+import nasa from "../../images/nasa.gif";
+import picobel from "../../images/picobel_hero.jpg";
+
 import Delay from "./steps/Delay";
 import EnhancedNote from "./steps/EnhancedNote";
 import SimpleNote from "./steps/SimpleNote";
 
 import DelayLoop from "./illustrations/DelayLoop";
 
+import AQOC from "./generic/AQOC";
 import CodeBlock from "./generic/CodeBlock";
 import Header from "./generic/Header";
 import Footer from "./generic/Footer";
 import FrequencyGraph from "./generic/FrequencyGraph";
+import ImageBlock from "./generic/ImageBlock";
 import ProgressBar from "./generic/ProgressBar";
 import SignalPath from "./generic/SignalPath";
 import SlideSwitcher from "./generic/SlideSwitcher";
@@ -34,8 +40,8 @@ const Main = ({}) => {
         // setSlides({ ...slides, total: slidesArray.length - 1 });
         setSlides({
             ...slides,
-            total: slidesArray.length - 1,
-            current: slidesArray.length - 1
+            total: slidesArray.length - 1
+            // current: slidesArray.length - 1
         });
     }, []);
 
@@ -68,9 +74,27 @@ const Main = ({}) => {
             <Header title={"Tom Hazledine"} />
         </React.Fragment>,
         <React.Fragment>
+            <ImageBlock path={cassette} />
+        </React.Fragment>,
+        <React.Fragment>
+            <Header title={"nasa.glitch.me"} />
+            <ImageBlock path={nasa} />
+        </React.Fragment>,
+        <React.Fragment>
+            <Header title={"Podcast"} />
+            <AQOC />
+        </React.Fragment>,
+        <React.Fragment>
+            <Header
+                title={"Picobel.js"}
+                subtitle={"github.com/tomhazledine/picobel"}
+            />
+            <ImageBlock path={picobel} />
+        </React.Fragment>,
+        <React.Fragment>
             <Header
                 title={"Audio Context"}
-                subtitle={"Create a master gain node"}
+                // subtitle={"Create a master gain node"}
             />
             <CodeBlock>{codeSnippets.context}</CodeBlock>
         </React.Fragment>,
@@ -209,7 +233,12 @@ const Main = ({}) => {
         </React.Fragment>,
         <React.Fragment>
             <div className="note__wrapper">
-                <Delay key={`delay_${2}`} showDelayControls={false} />
+                <Delay
+                    key={`delay_${2}`}
+                    showDelayControls={false}
+                    delayProp={40}
+                    feedbackProp={30}
+                />
                 <FrequencyGraph />
             </div>
             <CodeBlock>{codeSnippets.delay_connections}</CodeBlock>
@@ -243,7 +272,7 @@ const Main = ({}) => {
             <Header subtitle={"Me: Tom Hazledine - @thomashazledine"} />
             <Header
                 subtitle={
-                    "The code: https://github.com/tomhazledine/Delay-Presentation"
+                    "The code: github.com/tomhazledine/Delay-Presentation"
                 }
             />
         </React.Fragment>
