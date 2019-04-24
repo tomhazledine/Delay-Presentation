@@ -1,8 +1,7 @@
-# React Starter
+# Building a Delay
 
-A basic React build setup.
+Interactive slide-deck for my talk at [Future Sync](https://futuresync.co.uk/) conference, 25th April 2019.
 
-* `npm run test` runs any Jest tests found in the `tests` dir. It also generates a coverage report (currently only looking at files within `src/js/helpers`)
-* `npm run build` generates a production build.
-* `npm run build_dev` generates a development build.
-* `npm run dev` Serves the project at [http://localhost:1337](http://localhost:1337), and uses HMR to reload when files change.
+You can view this presentation online at [hardcore-jang-f0e618.netlify.com](https://hardcore-jang-f0e618.netlify.com/).
+
+Alternatively, you can run the presentation on your own machine. Before viewing, run `npm install` to download all the dependencies. Then run `npm run dev`, which will serve the presentation at [http://localhost:1337](http://localhost:1337).
