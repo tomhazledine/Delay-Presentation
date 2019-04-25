@@ -7,6 +7,7 @@ import picobel from "../../images/picobel_hero.jpg";
 import Delay from "./steps/Delay";
 import EnhancedNote from "./steps/EnhancedNote";
 import SimpleNote from "./steps/SimpleNote";
+import Showcase from "./steps/Showcase";
 
 import DelayLoop from "./illustrations/DelayLoop";
 
@@ -40,8 +41,8 @@ const Main = ({}) => {
         // setSlides({ ...slides, total: slidesArray.length - 1 });
         setSlides({
             ...slides,
-            total: slidesArray.length - 1,
-            current: slidesArray.length - 1
+            total: slidesArray.length - 1
+            // current: slidesArray.length - 1
         });
     }, []);
 
@@ -256,16 +257,22 @@ const Main = ({}) => {
         </React.Fragment>,
         <React.Fragment>
             <div className="note__wrapper">
-                <Delay
-                    key={`delay_${3}`}
-                    showDelayControls={true}
-                    delayProp={40}
-                    feedbackProp={70}
-                    useFilter={true}
-                />
-                <FrequencyGraph showSkin={true} />
+                <Showcase />
+                <FrequencyGraph showSkin={false} />
             </div>
         </React.Fragment>,
+        // <React.Fragment>
+        //     <div className="note__wrapper">
+        //         <Delay
+        //             key={`delay_${3}`}
+        //             showDelayControls={true}
+        //             delayProp={40}
+        //             feedbackProp={70}
+        //             useFilter={true}
+        //         />
+        //         <FrequencyGraph showSkin={true} />
+        //     </div>
+        // </React.Fragment>,
         <React.Fragment>
             <Header title={"All the codez!"} />
             <CodeBlock>{codeSnippets.all_the_things}</CodeBlock>
@@ -279,18 +286,6 @@ const Main = ({}) => {
                     "The code: github.com/tomhazledine/Delay-Presentation"
                 }
             />
-        </React.Fragment>,
-        <React.Fragment>
-            <div className="note__wrapper">
-                <Delay
-                    key={`delay_${3}`}
-                    showDelayControls={true}
-                    delayProp={40}
-                    feedbackProp={70}
-                    useFilter={true}
-                />
-                <FrequencyGraph showSkin={true} />
-            </div>
         </React.Fragment>
     ];
 
