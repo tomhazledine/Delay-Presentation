@@ -8,7 +8,7 @@ const GitRevisionPlugin = require("git-revision-webpack-plugin");
 const gitRevisionPlugin = new GitRevisionPlugin();
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const AppName = "App";
+const AppName = "Future Sync";
 
 module.exports = (env, argv) => ({
     entry: "./src/js/main.js",
